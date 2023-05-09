@@ -2,7 +2,9 @@ import React from 'react'
 
 const friends = () => {
   return (
-    <div>friends</div>
+    <div>
+      <H2>Friends list</H2>
+    </div>
   )
 }
 
