@@ -73,6 +73,7 @@ const userSchema = new Schema({
     },
     avatar: {
         type: String,
+        //maybe a match to ensure link is in correct form
         //some default icon for user profiles, maybe use project logo?
         default: 'https://www.pngitem.com/pimgs/m/10-106042_male-professional-avatar-icon-hd-png-download.png'
     },
