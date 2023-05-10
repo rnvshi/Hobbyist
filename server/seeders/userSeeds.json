@@ -1,0 +1,19 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "userName": "JohnnyD",
+        "email": "johnD1544@email.com",
+        "password": "123asd123"
+    },
+    {
+        "firstName": "Hobbs",
+        "lastName": "Iest",
+        "userName": "HobbsI43T",
+        "email": "Hobbs@email.com",
+        "password": "hobbyist",
+        "pseudonym": "Hobbs",
+        "bio": "Just a person who likes sharing their hobbies.",
+        "avatar": "https://upload.wikimedia.org/wikipedia/commons/d/df/Eurasian_hobby_%28Falco_subbuteo%29_by_Shantanu_Kuveskar.jpg"
+    }
+]
