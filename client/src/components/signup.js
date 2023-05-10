@@ -4,6 +4,7 @@ import React from 'react'
 const Signup = () => {
   return (
     <form>
+    
       <div>
         <label>User Name</label>
         <input id="userName" />
@@ -22,6 +23,7 @@ const Signup = () => {
       </div>
       <button type="login">LOG IN</button>
     </form>
+
   )
 }
 

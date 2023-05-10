@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import LoginForm from "./components/login"
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/home';
@@ -12,6 +12,7 @@ function App() {
   // const user = data?.me
   const user = false // Delete once replaced with real user
   return (
+
     <div className="App">
       <Router>
 
@@ -38,8 +39,7 @@ function App() {
 
       </Router>
 
-
-
+    
     </div>
   );
 }
