@@ -42,6 +42,29 @@ const typeDefs = gql`
     user: User
   }
 
+  input userInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+  }
+
+  input albumInput {
+    albumName: String!
+    description: String
+  }
+
+  input postInput {
+    albumId: ID!
+    postImg: String!
+    caption: String!
+  }
+
+  input commentInput {
+    postId: ID!
+    text: String!
+  }
+
   type Query {
     users: [User]
     user(userId: ID!): User
@@ -51,6 +74,15 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login:(email: String!, password: String!): Auth
+    createUser(input: userInput): Auth
+    createAlbum(input: albumInput): Album
+    createPost(input: postInput): Post
+    createComment(input: commentInput): Comment
+    deleteUser(userId: ID!): User
+    deleteAlbum(albumId: ID!): Album
+    deletePost(albumId: ID!, postId: ID!): Post
+    deleteComment(postId: ID!, commentId: ID!): Comment
   }
 `;
 
