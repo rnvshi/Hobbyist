@@ -3,6 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/home';
 import Profile from './pages/profile';
+import Login from './components/login';
+import Signup from './components/signup';
+import SignupPage from './pages/signuppage';
 // import { useQuery } from "apollo/client"
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
@@ -18,7 +21,7 @@ function App() {
         {user ?
           <Routes>
 
-            <Route path="/" element={<Home />} />
+
 
 
             <Route path="/profile" element={<Profile />} />
@@ -27,8 +30,9 @@ function App() {
           </Routes> :
 
           <Routes>
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<Login />} />
 
-            <Route path="/" element={<h1>signup</h1>} />
 
           </Routes>}
 
