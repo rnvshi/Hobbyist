@@ -6,7 +6,13 @@ const resolvers = {
         // GET all users
         // only albumIds populate the myAlbums field
         allUsers: async () => {
-            return User.find();
+            return User.find()
+                .populate({
+                    path: 'myAlbums',
+                    populate: {
+                        path: 'posts'
+                    }
+                });
         },
 
         // GET a single user given userId
@@ -18,7 +24,7 @@ const resolvers = {
         // GET all albums associated with a username
         // only postIds populate the posts field
         allAlbums: async (parent, { username }) => {
-            return Album.find({ username: username });
+            return Album.find({ username: username }).populate('posts');
         },
 
         // GET all posts associated with an album name
