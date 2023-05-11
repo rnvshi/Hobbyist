@@ -22,5 +22,8 @@
   "homepage": "https://github.com/rnvshi/Instagram-Clone#readme",
   "devDependencies": {
     "concurrently": "^8.0.1"
+  },
+  "dependencies": {
+    "mongoose": "^6.10.0"
   }
 }

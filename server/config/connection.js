@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
+const conn_str = 'mongodb+srv://ishaarahman:t3y7cckFzh0r8zVl@cluster0.wdb1ist.mongodb.net/'
+
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/hobbyist',
+  conn_str,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   }
 );
 
