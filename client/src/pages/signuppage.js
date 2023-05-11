@@ -10,6 +10,8 @@ const SignupPage = () => {
             </div>
 
             <Signup />
+
+            <h3 id="login-here">If you already have an account please login <a>HERE</a></h3>
         </div>
 
     )

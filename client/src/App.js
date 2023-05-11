@@ -6,6 +6,7 @@ import Profile from './pages/profile';
 import Login from './components/login';
 import Signup from './components/signup';
 import SignupPage from './pages/signuppage';
+import LoginPage from "./pages/login";
 // import { useQuery } from "apollo/client"
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
@@ -32,14 +33,14 @@ function App() {
 
           <Routes>
             <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginPage />} />
 
 
           </Routes>}
 
       </Router>
 
-    
+
     </div>
   );
 }
