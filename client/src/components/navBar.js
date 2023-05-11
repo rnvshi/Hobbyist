@@ -1,9 +1,9 @@
 import React from 'react'
-
+import hobbyLogo from `../images/hobbylogo.png`
 
 const navBar = () => {
   return (
-
+<src={hobbyLogo}>
     
 
 
