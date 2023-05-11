@@ -8,14 +8,32 @@ const albumSeeds = require('./albumSeeds.json');
 
 db.once('open', async () => {
   try {
-    await User.deleteMany({});
-    await User.create(userSeeds);
 
-    await Album.deleteMany({});
-    await Album.create(albumSeeds);
 
     await Post.deleteMany({});
-    await Post.create(postSeeds);
+    const postData= await Post.create(postSeeds, { timestamps: true,});
+
+    albumSeeds.forEach((album) => {
+      postData.forEach((post) => {
+        if(post.albumName === album.albumName){
+          album.posts.push(post._id)         
+        }
+      })
+    })
+    
+    await Album.deleteMany({});
+    const albumData = await Album.create(albumSeeds);
+
+    userSeeds.forEach((user) => {
+      albumData.forEach((album) => {
+        if(user.userName === album.username){
+          user.myAlbums.push(album._id)         
+        }
+      })
+    })
+
+    await User.deleteMany({});
+    await User.create(userSeeds);
 
     console.log('all done!');
     process.exit(0);

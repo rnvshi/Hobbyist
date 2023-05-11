@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const conn_str = 'mongodb+srv://ishaarahman:t3y7cckFzh0r8zVl@cluster0.wdb1ist.mongodb.net/'
+const conn_str = process.env.CONN_STR
 
 mongoose.connect(
   conn_str,

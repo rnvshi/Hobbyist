@@ -25,7 +25,7 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
-    username: String!
+    albumName: String!
     postImg: String!
     caption: String!
     comments: [Comment]
@@ -42,45 +42,20 @@ const typeDefs = gql`
     user: User
   }
 
-  input userInput {
-    firstName: String!
-    lastName: String!
-    email: String!
-    password: String!
-  }
-
-  input albumInput {
-    albumName: String!
-    description: String
-  }
-
-  input postInput {
-    albumId: ID!
-    postImg: String!
-    caption: String!
-  }
-
-  input commentInput {
-    postId: ID!
-    text: String!
-  }
-
   type Query {
-    users: [User]
-    user(userId: ID!): User
-    albums(userId: ID!): [Album]
-    posts(albumId: ID!): [Post]
-    comments(postId: ID!): [Comment]
+    allUsers: [User]
+    singleUser(userId: ID!): User
+    allAlbums(username: String!): [Album]
+    allPosts(albumName: String!): [Post]
+    singlePost(postId: ID!): Post
   }
 
   type Mutation {
-    login(email: String!, password: String!): Auth
-    createUser(input: userInput): Auth
-    createAlbum(input: albumInput): Album
-    createPost(input: postInput): Post
-    createComment(input: commentInput): Comment
-    deleteUser(userId: ID!): User
-    deleteAlbum(albumId: ID!): Album
+    createUser(firstName: String!, lastName: String!, userName: String!, email: String!, password: String!): Auth
+    createAlbum(albumName: String!, description: String, username: String!): Album
+    createPost(postImg: String!, caption: String!, albumName: String!, username: String!): Post
+    createComment(username: String!, postId: String!, text: String!): Comment
+    deleteAlbum(userId: ID!, albumId: ID!): Album
     deletePost(albumId: ID!, postId: ID!): Post
     deleteComment(postId: ID!, commentId: ID!): Comment
   }
