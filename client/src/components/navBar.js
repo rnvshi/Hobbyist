@@ -3,7 +3,7 @@ import hobbyLogo from `../images/hobbylogo.png`
 
 const navBar = () => {
   return (
-<src={hobbyLogo}>
+
     
 
 
@@ -11,6 +11,18 @@ const navBar = () => {
 
     <div>
     <button type="submit">USER ACC</button>
+    </div>
+
+    <div>
+    <button type="submit">FEED</button>
+    </div>
+
+    <div>
+    <button type="submit">CREATE ALBUM</button>
+    </div>
+
+    <div>
+    <button type="submit">ADD TO FEED</button>
     </div>
 
     <div>
