@@ -10,6 +10,9 @@ const commentSchema = new Schema({
         type: String,
         required: true,
     }
+},
+{
+    timestamps: true,
 })
 
 const postSchema = new Schema({
@@ -46,7 +49,8 @@ const postSchema = new Schema({
     {
         toJSON: {
             virtuals: true,
-          },
+        },
+        timestamps: true,
     }
 )
 
