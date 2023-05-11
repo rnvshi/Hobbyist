@@ -11,7 +11,7 @@ import LoginPage from "./pages/login";
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
   // const user = data?.me
-  const user = false // Delete once replaced with real user
+  const user = true // Delete once replaced with real user
   return (
 
     <div className="App">

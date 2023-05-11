@@ -1,4 +1,5 @@
 import React from 'react'
+import Profile from "../pages/profile"
 
 //form to signup
 const Signup = () => {
@@ -19,7 +20,7 @@ const Signup = () => {
           <label id="password-label" class="signup-form-label">Password</label>
           <input id="password" />
         </div>
-        <button id="signup-button" type="login">SIGN IN</button>
+        <a id="signinButtonLink" href={Profile}><button id="signup-button" type="login">SIGN UP</button></a>
       </form>
     </div>
 
