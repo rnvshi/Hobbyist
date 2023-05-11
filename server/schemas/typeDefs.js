@@ -55,6 +55,9 @@ const typeDefs = gql`
     createAlbum(albumName: String!, description: String, username: String!): Album
     createPost(postImg: String!, caption: String!, albumName: String!, username: String!): Post
     createComment(username: String!, postId: String!, text: String!): Comment
+    deleteAlbum(userId: ID!, albumId: ID!): Album
+    deletePost(albumId: ID!, postId: ID!): Post
+    deleteComment(postId: ID!, commentId: ID!): Comment
   }
 `;
 

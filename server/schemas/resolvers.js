@@ -83,7 +83,56 @@ const resolvers = {
                     runValidators: true,
                 }
             );
-        }
+        },
+
+        // DELETE album given userId and albumId
+        // will also delete associated posts inside album
+        // will also delete albumIds from associated User document
+        deleteAlbum: async (parent, { userId, albumId }) => {
+
+            const album = await Album.findOneAndDelete(
+                { _id: albumId }
+            );
+
+            await User.findOneAndUpdate(
+                { _id: userId },
+                { $pull: { myAlbums: album._id } }
+            );
+
+            await Post.deleteMany({ albumName: album.albumName });
+
+            return album;
+        },
+
+        // DELETE comment given albumId and postId
+        // later replace username with context.user
+        // will also deleted nested comments subdocument
+        // will also remove postId from posts field in Album document
+        deletePost: async (parent, { albumId, postId }) => {
+
+            const post = await Post.findOneAndDelete(
+                { _id: postId });
+
+            await Album.findOneAndUpdate(
+                { _id: albumId },
+                { $pull: { posts: post._id } }
+            );
+
+            return post;
+        },
+
+        // DELETE comment given postId and commentId
+        deleteComment: async (parent, { postId, commentId }) => {
+            return Post.findOneAndUpdate(
+                { _id: postId },
+                {
+                    $pull: {
+                        comments: { _id: commentId },
+                    },
+                },
+                { new: true }
+            );
+        },
     }
 };
 
