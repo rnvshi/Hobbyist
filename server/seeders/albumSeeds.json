@@ -2,11 +2,13 @@
     {
         "username": "HobbsI43T",
         "albumName": "Birds",
-        "description": "A collection of posts about interesting birds."
+        "description": "A collection of posts about interesting birds.",
+        "posts": []
     },
     {
         "username": "JohnnyD",
         "albumName": "Architectural Paintings",
-        "description": "Some architectural paintings that look neat."
+        "description": "Some architectural paintings that look neat.",
+        "posts": []
     }
 ]

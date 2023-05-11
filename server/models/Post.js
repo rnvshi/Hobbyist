@@ -20,7 +20,7 @@ const postSchema = new Schema({
         //     ref: 'User'
         // },
 
-        username: {
+        albumName: {
             type: String,
             required: true,
             trim: true,
