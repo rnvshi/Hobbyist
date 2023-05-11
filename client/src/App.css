@@ -32,7 +32,89 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/*------ Styling Alexia -----*/
+
+/*-- SignUp Form --*/
+
+.signup-fields {
+  padding: 10px;
+
+
+}
+
+#signup-form {
+  margin-top: 60px;
+
+
+}
+
+#email-label {
+  padding-right: 60px;
+  font-size: 25px;
+
+}
+
+#password-label {
+  padding-right: 25px;
+  font-size: 25px;
+}
+
+.signup-form-label {
+  padding-right: 10px;
+  font-size: 25px;
+}
+
+#signup-button {
+  padding: 7px 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 20px;
+
+}
+
+#logo-img {
+  border-radius: 50%;
+  margin-top: 30px;
+
+}
+
+
+/*----- Media Queries Alexia -----*/
+
+@media screen and (max-width:375px) {
+
+  /*--SignUp Form--*/
+
+  #logo-img-div {
+    display: flex;
+
+  }
+
+  #logo-img {
+    justify-content: center;
+    padding-left: 20px;
+
+  }
+
+  #signup-form-flex {
+    display: flex;
+  }
+
+  #signup-form {
+    justify-content: center;
+  }
+
+  #userName,
+  #email,
+  #password {
+    max-width: 130px;
   }
 }

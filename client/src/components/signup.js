@@ -3,26 +3,25 @@ import React from 'react'
 //form to signup
 const Signup = () => {
   return (
-    <form>
-    
-      <div>
-        <label>User Name</label>
-        <input id="userName" />
-      </div>
-      <div>
-        <label>Pseudonym</label>
-        <input id="Pseudonym" />
-      </div>
-      <div>
-        <label>e-mail</label>
-        <input id="email"></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input id="password" />
-      </div>
-      <button type="login">LOG IN</button>
-    </form>
+    <div id="signup-form-flex">
+      <form id="signup-form">
+
+        <div class="signup-fields">
+          <label class="signup-form-label">User Name</label>
+          <input id="userName" />
+        </div>
+
+        <div class="signup-fields">
+          <label id="email-label" class="signup-form-label">E-mail</label>
+          <input id="email"></input>
+        </div>
+        <div class="signup-fields">
+          <label id="password-label" class="signup-form-label">Password</label>
+          <input id="password" />
+        </div>
+        <button id="signup-button" type="login">SIGN IN</button>
+      </form>
+    </div>
 
   )
 }
