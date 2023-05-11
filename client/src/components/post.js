@@ -6,14 +6,10 @@ const post = () => {
   return (
     <form>
       <div>
-        <label>User Name</label>
-      <input id="userName"/>
+        <label>Please add your post</label>
+      <input id="post"/>
       </div>
-      <div>
-        <label>Password</label>
-      <input id="password"/>
-      </div>
-      <button type="submit">LOG IN</button>
+      <button type="submit">POST</button>
     </form>
   )
 //
