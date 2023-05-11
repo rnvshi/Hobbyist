@@ -8,12 +8,10 @@ const albumSeeds = require('./albumSeeds.json');
 
 db.once('open', async () => {
   try {
-    //get ids, map to album by
-    //create albums
-    //get album ids, update user with album ids
+
 
     await Post.deleteMany({});
-    const postData= await Post.create(postSeeds);
+    const postData= await Post.create(postSeeds, { timestamps: true,});
 
     albumSeeds.forEach((album) => {
       postData.forEach((post) => {
