@@ -1,0 +1,32 @@
+[
+    {
+        "albumName": "Birds",
+        "postImg": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcT7p48zgkqUyYDdx7AGnlWVOEh6vpc8QHHPh0mAtn_73_jD_etGCyAexD1ArARBsGl4HqZYyGjcpRJRo3A",
+        "caption": "A picture of a colourful bird."
+    },
+    {
+        "albumName": "Birds",
+        "postImg": "https://www.birdlife.org/wp-content/uploads/2021/06/Eagle-in-flight-Richard-Lee-Unsplash-1-edited-scaled.jpg",
+        "caption": "An eagle mid-flight."
+    },
+    {
+        "albumName": "Birds",
+        "postImg": "https://i.natgeofe.com/n/6f9b6d9e-5797-4867-a859-7b0c2a66cd3b/02-bird-of-paradise-A012_C010_1029SF_0001575.jpg",
+        "caption": "A so-called bird-of-paradise."
+    },
+    {
+        "albumName": "Architectural Paintings",
+        "postImg": "https://hudsonreporter.com/wp-content/uploads/2022/03/04Baydollhaus07.png",
+        "caption": "Cool picture of the san-francisco bridge?"
+    },
+    {
+        "albumName": "Architectural Paintings",
+        "postImg": "https://s32625.pcdn.co/wp-content/uploads/2017/09/watercolor-art-architecture-by-thomas-schaller.jpg.optimal.jpg",
+        "caption": "Nicely painted watercolor architecture."
+    },
+    {
+        "albumName": "Architectural Paintings",
+        "postImg": "https://images.squarespace-cdn.com/content/v1/4f5ab23e24acb623838bd534/1375726706793-35M93LOVKDHUL08QUXC1/Jens-Hausmann-painting-Modern-Architecture-Painting_2.jpg",
+        "caption": "Bojack vibes."
+    }
+]
