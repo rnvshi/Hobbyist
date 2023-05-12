@@ -18,9 +18,13 @@ const feed = () => {
           <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
         </div>
         <div>
-          <h3>Description:</h3>
+          <h3>Username:</h3>
+          <p></p>
+          <h3>Caption:</h3>
           <p></p>
           <h3>Comments:</h3>
+          <p></p>
+          <h3>Created At:</h3>
           <p></p>
           <button>Like</button>
         </div>
@@ -31,9 +35,13 @@ const feed = () => {
           <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
         </div>
         <div>
-          <h3>Description:</h3>
+          <h3>Username:</h3>
+          <p></p>
+          <h3>Caption:</h3>
           <p></p>
           <h3>Comments:</h3>
+          <p></p>
+          <h3>Created At:</h3>
           <p></p>
           <button>Like</button>
         </div>
@@ -44,9 +52,13 @@ const feed = () => {
           <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
         </div>
         <div>
-          <h3>Description:</h3>
+          <h3>Username:</h3>
+          <p></p>
+          <h3>Caption:</h3>
           <p></p>
           <h3>Comments:</h3>
+          <p></p>
+          <h3>Created At:</h3>
           <p></p>
           <button>Like</button>
         </div>

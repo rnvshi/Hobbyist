@@ -1,6 +1,8 @@
 import Login from "../components/login";
 import React from 'react'
 import hobbylogo from '../images/hobbylogo.png'
+import { Link } from "react-router-dom";
+
 const LoginPage = () => {
     return (
         <div>
@@ -12,7 +14,7 @@ const LoginPage = () => {
 
             <Login />
 
-
+            <h3 id="login-here">If you don't have an account please signup <Link id="hereLink" to="/signup">HERE</Link></h3>
         </div>
 
     )

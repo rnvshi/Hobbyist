@@ -1,15 +1,17 @@
 import LoginForm from "./components/login"
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './pages/home';
+import Post from "./pages/post"
 import Profile from './pages/profile';
 //import Login from './components/login';
 //import Signup from './components/signup';
+import Navigation from "./components/navBar"
 import Search from './pages/search';
 import SignupPage from './pages/signuppage';
 import LoginPage from "./pages/login";
 import Feed from "./pages/feed";
 import FriendProfile from "./pages/friendprofile";
+import Footer from "./components/footer";
 // import { useQuery } from "apollo/client"
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
@@ -20,24 +22,28 @@ function App() {
     <div className="App">
       <Router>
 
-        <navBar />
-
 
         {user ?
+          <>
+            <Navigation />
+            <Routes>
+
+
+
+
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
+              <Route path="/post" element={<Post />} />
+
+            </Routes>
+            <Footer />
+          </> :
+
+
           <Routes>
-
-
-
-
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/friendprofile" element={<FriendProfile />} />
-
-
-          </Routes> :
-
-          <Routes>
+            <Route path="/" element={<SignupPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
 
@@ -45,6 +51,8 @@ function App() {
           </Routes>}
 
       </Router>
+
+
 
 
     </div>
