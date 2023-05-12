@@ -13,11 +13,45 @@ const feed = () => {
       </div>
 
       <Navigation />
-      <div>
-        <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
-        <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
-        <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+      <div class="feedflex">
+        <div>
+          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+        </div>
+        <div>
+          <h3>Description:</h3>
+          <p></p>
+          <h3>Comments:</h3>
+          <p></p>
+          <button>Like</button>
+        </div>
       </div>
+
+      <div class="feedflex">
+        <div>
+          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+        </div>
+        <div>
+          <h3>Description:</h3>
+          <p></p>
+          <h3>Comments:</h3>
+          <p></p>
+          <button>Like</button>
+        </div>
+      </div>
+
+      <div class="feedflex">
+        <div>
+          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+        </div>
+        <div>
+          <h3>Description:</h3>
+          <p></p>
+          <h3>Comments:</h3>
+          <p></p>
+          <button>Like</button>
+        </div>
+      </div>
+
       <Footer />
     </div>
   )

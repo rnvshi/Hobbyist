@@ -271,6 +271,15 @@
 
 }
 
+.feedflex {
+  display: flex;
+}
+
+/*--- Friend Profile ---*/
+
+#friendbuttonsflex {
+  display: flex;
+}
 
 /*----- Media Queries Alexia -----*/
 

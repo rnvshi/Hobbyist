@@ -9,6 +9,7 @@ import Search from './pages/search';
 import SignupPage from './pages/signuppage';
 import LoginPage from "./pages/login";
 import Feed from "./pages/feed";
+import FriendProfile from "./pages/friendprofile";
 // import { useQuery } from "apollo/client"
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
@@ -31,6 +32,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/feed" element={<Feed />} />
+            <Route path="/friendprofile" element={<FriendProfile />} />
 
 
           </Routes> :

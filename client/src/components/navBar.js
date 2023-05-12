@@ -18,8 +18,13 @@ const navBar = () => {
         <button>FEED</button>
       </div>
 
-      <div class="navbuttons">
-        <button>CREATE ALBUM</button>
+      <div class="dropdown navbuttons">
+        <button class="dropdown-button">ALBUM</button>
+        <div class="dropdown-content">
+          <a href="#">Create</a>
+          <a href="#">View</a>
+
+        </div>
       </div>
 
       <div class="navbuttons">
