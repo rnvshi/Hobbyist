@@ -25,8 +25,13 @@ const navBar = () => {
         <button>POST</button>
       </div>
 
-      <div class="navbuttons">
-        <button>FRIENDS</button>
+      <div class="dropdown navbuttons">
+        <button class="dropdown-button">FRIENDS</button>
+        <div class="dropdown-content">
+          <a href="#">Friend 1</a>
+          <a href="#">Friend 2</a>
+          <a href="#">Friend 3</a>
+        </div>
       </div>
 
       <div class="navbuttons">
