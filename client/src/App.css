@@ -261,6 +261,17 @@
 
 #footer {}
 
+/*--Feed Page--*/
+
+.feedposts {
+  display: block;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  margin-bottom: 20px !important;
+
+}
+
+
 /*----- Media Queries Alexia -----*/
 
 @media screen and (max-width:375px) {
