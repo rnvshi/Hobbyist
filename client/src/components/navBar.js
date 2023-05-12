@@ -1,43 +1,43 @@
 import React from 'react'
-import hobbyLogo from `../images/hobbylogo.png`
+
 
 const navBar = () => {
   return (
 
-    
 
 
-    <form>
 
-    <div>
-    <button type="submit">USER ACC</button>
-    </div>
+    <nav id="navflex">
 
-    <div>
-    <button type="submit">FEED</button>
-    </div>
+      <div class="navbuttons">
+        <button>PROFILE</button>
+      </div>
 
-    <div>
-    <button type="submit">CREATE ALBUM</button>
-    </div>
+      <div class="navbuttons">
+        <button>FEED</button>
+      </div>
 
-    <div>
-    <button type="submit">ADD TO FEED</button>
-    </div>
+      <div class="navbuttons">
+        <button>CREATE ALBUM</button>
+      </div>
 
-    <div>
-    <button type="submit">FRIENDS</button>
-    </div>
+      <div class="navbuttons">
+        <button>POST</button>
+      </div>
 
-    <div>
-    <button type="submit">SEARCH</button>
-    </div>
+      <div class="navbuttons">
+        <button>FRIENDS</button>
+      </div>
 
-    <div>
-    <button type="submit">LOGOUT</button>
-    </div>
+      <div class="navbuttons">
+        <button type="submit">SEARCH</button>
+      </div>
 
-    </form>
+      <div class="navbuttons">
+        <button type="submit">LOGOUT</button>
+      </div>
+
+    </nav>
   )
 }
 

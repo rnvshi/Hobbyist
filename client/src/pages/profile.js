@@ -2,6 +2,7 @@ import React from 'react'
 import hobbylogo from '../images/hobbylogo.png'
 import Footer from '../components/footer'
 import PlaceholderImg from '../images/placeholderimg.png'
+import Navigation from '../components/navBar'
 
 const Profile = () => {
   return (
@@ -9,6 +10,10 @@ const Profile = () => {
 
       <div id="logo-img-div">
         <img id="logo-img-profile" src={hobbylogo}></img>
+      </div>
+
+      <div>
+        <Navigation />
       </div>
 
       <div id="flexprofilebio">
