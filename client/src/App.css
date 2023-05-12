@@ -32,7 +32,169 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/*------ Styling Alexia -----*/
+
+/*-- SignUp Form --*/
+
+.signup-fields {
+  padding: 10px;
+
+
+}
+
+#signup-form {
+  margin-top: 60px;
+
+
+}
+
+#email-label {
+  padding-right: 60px;
+  font-size: 25px;
+
+}
+
+#password-label {
+  padding-right: 25px;
+  font-size: 25px;
+}
+
+.signup-form-label {
+  padding-right: 10px;
+  font-size: 25px;
+}
+
+#signup-button {
+  padding: 7px 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 20px;
+
+}
+
+#signup-button:hover {
+  background-color: rgb(63, 62, 62);
+  color: white;
+  cursor: pointer;
+  border-color: white;
+}
+
+#logo-img {
+  border-radius: 50%;
+  margin-top: 30px;
+
+}
+
+#login-here {
+  font-weight: 500;
+}
+
+/*--Login Form --*/
+
+#password-login-form {
+  margin-right: 10px;
+}
+
+#password-login-form {
+  margin-left: 7px;
+}
+
+#hereLink:hover {
+  cursor: pointer;
+  color: rgb(54, 54, 248);
+}
+
+#hereLink {
+  color: black;
+}
+
+/*--Profile Page Alexia --*/
+
+#logo-img-profile {
+  max-width: 100px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+#profileimg {
+  max-width: 200px;
+  border: 5px solid white;
+  margin-left: 50px;
+
+}
+
+#profileimggallery {
+  max-width: 200px;
+  padding: 10px;
+  margin: 5px;
+  border: 5px solid white;
+}
+
+#flexprofilebio {
+  display: flex;
+
+}
+
+#profiletext {
+  margin-left: 30px;
+  color: white;
+}
+
+#profilegalleries {
+  margin-top: 30px;
+}
+
+#footer {
+  color: white;
+
+}
+
+#biotext {
+  margin-right: 60px;
+}
+
+#albumtext {
+  color: white;
+  font-size: 40px;
+}
+
+
+/*----- Media Queries Alexia -----*/
+
+@media screen and (max-width:375px) {
+
+  /*--SignUp Form--*/
+
+  #logo-img-div {
+    display: flex;
+
+  }
+
+  #logo-img {
+    justify-content: center;
+    padding-left: 20px;
+
+  }
+
+  #signup-form-flex {
+    display: flex;
+  }
+
+  #signup-form {
+    justify-content: center;
+  }
+
+  #userName,
+  #email,
+  #password {
+    max-width: 130px;
   }
 }
