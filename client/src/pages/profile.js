@@ -27,7 +27,7 @@ const Profile = () => {
         <img id="profileimggallery" src={PlaceholderImg}></img>
       </div>
 
-      <Footer />
+
     </div>
   )
 }

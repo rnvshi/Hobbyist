@@ -8,27 +8,6 @@ const feed = () => {
   return (
     <div>
 
-      <div id="logo-img-div">
-        <img id="logo-img-profile" src={hobbylogo}></img>
-      </div>
-
-      <Navigation />
-      <div class="feedflex">
-        <div>
-          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
-        </div>
-        <div>
-          <h3>Username:</h3>
-          <p></p>
-          <h3>Caption:</h3>
-          <p></p>
-          <h3>Comments:</h3>
-          <p></p>
-          <h3>Created At:</h3>
-          <p></p>
-          <button>Like</button>
-        </div>
-      </div>
 
       <div class="feedflex">
         <div>
@@ -64,7 +43,24 @@ const feed = () => {
         </div>
       </div>
 
-      <Footer />
+      <div class="feedflex">
+        <div>
+          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+        </div>
+        <div>
+          <h3>Username:</h3>
+          <p></p>
+          <h3>Caption:</h3>
+          <p></p>
+          <h3>Comments:</h3>
+          <p></p>
+          <h3>Created At:</h3>
+          <p></p>
+          <button>Like</button>
+        </div>
+      </div>
+
+
     </div>
   )
 }

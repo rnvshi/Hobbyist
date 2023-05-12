@@ -8,14 +8,6 @@ const FriendProfile = () => {
     return (
         <div>
 
-            <div id="logo-img-div">
-                <img id="logo-img-profile" src={hobbylogo}></img>
-            </div>
-
-            <div>
-                <Navigation />
-            </div>
-
             <div id="flexprofilebio">
                 <div >
                     <img id="profileimg" src={PlaceholderImg}></img>
@@ -33,7 +25,7 @@ const FriendProfile = () => {
                 <button>Decline</button>
             </div>
 
-            <Footer />
+
         </div>
     )
 }

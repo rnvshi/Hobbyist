@@ -9,11 +9,7 @@ const Post = () => {
   return (
     <div>
 
-      <div id="logo-img-div">
-        <img id="logo-img-profile" src={hobbylogo}></img>
-      </div>
 
-      <Navigation />
       <div class="feedflex">
         <div>
           <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
@@ -26,7 +22,7 @@ const Post = () => {
         </div>
       </div>
 
-      <Footer />
+
     </div>
   )
 }
