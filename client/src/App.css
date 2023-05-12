@@ -205,6 +205,7 @@
 /* Style the links inside the dropdown */
 .dropdown-content a {
   color: black;
+  background-color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -212,7 +213,7 @@
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #a4fc7b;
 }
 
 /* Show the dropdown menu on hover */
@@ -220,6 +221,45 @@
   display: block;
 }
 
+/*--Search Page--*/
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Style the search input */
+.search-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  width: 300px;
+  max-width: 100%;
+  margin-right: 10px;
+}
+
+/* Style the search button */
+.search-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Change search button color on hover */
+.search-button:hover {
+  background-color: #a4fc7b;
+  color: black;
+
+}
+
+#footer {}
 
 /*----- Media Queries Alexia -----*/
 

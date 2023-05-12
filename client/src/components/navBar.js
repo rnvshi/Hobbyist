@@ -1,4 +1,5 @@
 import React from 'react'
+import LoginPage from '../pages/login'
 
 
 const navBar = () => {
@@ -35,11 +36,11 @@ const navBar = () => {
       </div>
 
       <div class="navbuttons">
-        <button type="submit">SEARCH</button>
+        <button>SEARCH</button>
       </div>
 
       <div class="navbuttons">
-        <button type="submit">LOGOUT</button>
+        <a href={LoginPage}><button>LOGOUT</button></a>
       </div>
 
     </nav>
