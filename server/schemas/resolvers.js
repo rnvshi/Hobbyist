@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Album, Post } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -52,11 +53,12 @@ const resolvers = {
         // remember to add context code to this after back-end is up and running
         // also later on can use context.user to populate username field here (or use userID)
         // this will populate the myAlbum field in the User collection with albumIds only
-        createAlbum: async (parent, { albumName, description, username }) => {
-            const album = await Album.create({ albumName, description, username });
+        createAlbum: async (parent, { albumName, description}, context) => {
+            console.log(context.user)
+            const album = await Album.create({ albumName, description, username: context.user.userName });
 
             const user = await User.findOneAndUpdate(
-                { userName: username },
+                { userName: context.user.userName },
                 { $addToSet: { myAlbums: album._id } }
             );
 
@@ -139,6 +141,46 @@ const resolvers = {
                 { new: true }
             );
         },
+
+        //login
+        login: async (parent, {userName, password}) => {
+            const user = await User.findOne({ userName });
+
+            if (!user) {
+                throw new AuthenticationError('No user with this username found!');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect password!');
+            }
+
+            const token = signToken(user);
+            console.log(user)
+            return { token, user };
+        },
+
+        // //addFriend
+        // addFriend: async (parent, {friendId}) => {
+            
+        // },
+        // //acceptFriend
+        // AcceptFriend: async (parent, {friendId}) => {
+            
+        // },
+        // //declineFriend
+        // declineFriend: async (parent, {friendId}) => {
+            
+        // },
+        // //deleteFriend
+        // deleteFriend: async (parent, {friendId}) => {
+            
+        // },
+        // //likePost
+        // likePost: async (parent, {postId}) => {
+            
+        // },
     }
 };
 

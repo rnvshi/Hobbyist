@@ -10,5 +10,11 @@
         "albumName": "Architectural Paintings",
         "description": "Some architectural paintings that look neat.",
         "posts": []
+    },
+    {
+        "username": "HobbsI43T",
+        "albumName": "Birds",
+        "description": "MY collection of interesting birds.",
+        "posts": []
     }
 ]
