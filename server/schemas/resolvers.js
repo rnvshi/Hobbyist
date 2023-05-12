@@ -18,7 +18,13 @@ const resolvers = {
         // GET a single user given userId
         // only albumIds populate the myAlbums field
         singleUser: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+            return User.findOne({ _id: userId })
+                .populate({
+                    path: 'myAlbums',
+                    populate: {
+                        path: 'posts'
+                    }
+                });
         },
 
         // GET all albums associated with a username
