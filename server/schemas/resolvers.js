@@ -45,16 +45,15 @@ const resolvers = {
         createUser: async (parent, { firstName, lastName, userName, email, password }) => {
             const user = await User.create({ firstName, lastName, userName, email, password });
 
-            // remember to include code for sign token
+            const token = signToken(user);
 
-            return user;
+            return { token, user};
         },
 
         // remember to add context code to this after back-end is up and running
         // also later on can use context.user to populate username field here (or use userID)
         // this will populate the myAlbum field in the User collection with albumIds only
         createAlbum: async (parent, { albumName, description}, context) => {
-            console.log(context.user)
             const album = await Album.create({ albumName, description, username: context.user.userName });
 
             const user = await User.findOneAndUpdate(
@@ -66,8 +65,8 @@ const resolvers = {
         },
 
         // add authentication at some level to validate img dimensions (must be square)
-        createPost: async (parent, { postImg, caption, albumName, username }) => {
-            const post = await Post.create({ postImg, caption, albumName, username });
+        createPost: async (parent, { postImg, caption, albumName}, context) => {
+            const post = await Post.create({ postImg, caption, albumName, username: context.user.userName });
 
             const album = await Album.findOneAndUpdate(
                 { albumName: albumName },
@@ -78,12 +77,12 @@ const resolvers = {
         },
 
         // this will populate the comment field as a subdocument
-        createComment: async (parent, { username, postId, text }) => {
+        createComment: async (parent, { postId, text }, context) => {
             return Post.findOneAndUpdate(
                 { _id: postId },
                 {
                     $addToSet: {
-                        comments: { username, text },
+                        comments: { username: context.user.userName, text },
                     },
                 },
                 {
@@ -96,20 +95,24 @@ const resolvers = {
         // DELETE album given userId and albumId
         // will also delete associated posts inside album
         // will also delete albumIds from associated User document
-        deleteAlbum: async (parent, { userId, albumId }) => {
+        deleteAlbum: async (parent, { albumId }, context) => {
 
-            const album = await Album.findOneAndDelete(
-                { _id: albumId }
-            );
-
-            await User.findOneAndUpdate(
-                { _id: userId },
-                { $pull: { myAlbums: album._id } }
-            );
-
-            await Post.deleteMany({ albumName: album.albumName });
-
-            return album;
+            if(context.user.myAlbums.contains(albumId)){
+                const album = await Album.findOneAndDelete(
+                    { _id: albumId }
+                );
+    
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { myAlbums: album._id } }
+                );
+    
+                await Post.deleteMany({ albumName: album.albumName });
+    
+                return album;
+            }else{
+                throw new AuthenticationError('User does not have an album with this id!');
+            }
         },
 
         // DELETE comment given albumId and postId
@@ -157,26 +160,102 @@ const resolvers = {
             }
 
             const token = signToken(user);
-            console.log(user)
             return { token, user };
         },
 
-        // //addFriend
-        // addFriend: async (parent, {friendId}) => {
+        //friend mutations require non-stale context. currently, the context is not updated when the logged in user's properties are changed. This must be done somehow.
+
+        //addFriend
+        addFriend: async (parent, {friendId}, context) => {
+            //create friend object for user
+            console.log(context.user)
+            if(context.user){
+                const user = await User.updateOne({ _id: context.user._id}, 
+                    { $push: { friends: {friendId, sender: true, accepted: false}}})
+                //create friend object for friend
+                await User.updateOne({_id: friendId}, 
+                    { $push: { friends: { friendId: context.user._id, sender: false, accepted: false}} })
+                
+                return user;
+            }
+            return;
+        },
+
+        //acceptFriend
+        acceptFriend: async (parent, {friendId}, context) => {
+
+            const friends = context.user.friends;
+            const friend = friends.find((friend) => friend.friendId === friendId);
+
+            console.log(friend.sender)
             
-        // },
-        // //acceptFriend
-        // AcceptFriend: async (parent, {friendId}) => {
-            
-        // },
-        // //declineFriend
-        // declineFriend: async (parent, {friendId}) => {
-            
-        // },
-        // //deleteFriend
-        // deleteFriend: async (parent, {friendId}) => {
-            
-        // },
+            //check if user is the reciever of the friend request
+            if(friend?.sender === false){
+                
+                //update user's friend object
+                const user1Friend = {friendId, accepted: true, sender: null}
+                const user1 = await User.findOneAndUpdate({ "_id": context.user._id, "friends.friendId": friendId }, 
+                { "friends.$": user1Friend })
+                
+                //update friend's friend object
+                const user2Friend = { friendId: context.user._id, accepted: true, sender: null}
+                const user2 = await User.findOneAndUpdate({ "_id": friendId, "friends.friendId": context.user._id }, 
+                { "friends.$": user2Friend })
+    
+                // console.log(user);
+                return user1;
+
+            }else if(friend?.sender === true){
+                throw new AuthenticationError('User must be receiver of request to accept!');
+            }else{
+                throw new AuthenticationError('User is already your friend!');
+            }
+        },
+
+
+        //declineFriend
+        //needs more testing
+        declineFriend: async (parent, {friendId, context}) => {
+            const friends = context.user.friends;
+            const friend = friends.find((friend) => friend.friendId === friendId);
+
+            console.log(context.user);
+
+            if(friend?.sender === false){
+                const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                 { $pull: { friends: { friendId: friendId} } })
+    
+                const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                 { $pull: { friends: { friendId: context.user._id} } })
+
+                 return user1;
+            }else if (friend?.sender === true){
+                throw new AuthenticationError("Sender of friend request cannot decline!")
+            }else{
+                throw new AuthenticationError("You are already friends!")
+            }
+        },
+        //deleteFriend
+        //needs more testing
+        deleteFriend: async (parent, {friendId}, context) => {
+
+            const friends = context.user.friends;
+            const friend = friends.find((friend) => friend.friendId === friendId);
+
+            if(friend?.sender === null){
+                const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                 { $pull: { friends: { friendId: friendId} } })
+    
+                const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                 { $pull: { friends: { friendId: context.user._id} } })
+
+                 return user1;
+            }else{
+                throw new AuthenticationError("Friend request is still pending!")
+            }
+        },
+
+
         // //likePost
         // likePost: async (parent, {postId}) => {
             
