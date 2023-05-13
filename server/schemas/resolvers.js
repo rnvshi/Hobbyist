@@ -19,7 +19,13 @@ const resolvers = {
         // GET a single user given userId
         // only albumIds populate the myAlbums field
         singleUser: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+            return User.findOne({ _id: userId })
+                .populate({
+                    path: 'myAlbums',
+                    populate: {
+                        path: 'posts'
+                    }
+                });
         },
 
         // GET all albums associated with a username
@@ -42,12 +48,29 @@ const resolvers = {
     },
 
     Mutation: {
+        login: async (parent, { email, password }) => {
+
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
+        },
+
         createUser: async (parent, { firstName, lastName, userName, email, password }) => {
             const user = await User.create({ firstName, lastName, userName, email, password });
-
-            // remember to include code for sign token
-
-            return user;
+            const token = signToken(user);
+            return { token, user };
         },
 
         // remember to add context code to this after back-end is up and running
