@@ -281,6 +281,30 @@
   display: flex;
 }
 
+/*----Album View Page Alexia ---*/
+
+
+.albumviewposts {
+  padding-bottom: 20px;
+  padding-right: 5px;
+}
+
+#flexalbumview {
+  display: flex;
+  justify-content: center;
+
+}
+
+.albumviewimg {
+  max-width: 200px;
+  max-height: 200px;
+  border: 5px solid white;
+}
+
+#albumtext {
+  color: white;
+}
+
 /*----- Media Queries Alexia -----*/
 
 @media screen and (max-width:375px) {

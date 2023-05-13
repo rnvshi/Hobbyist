@@ -20,7 +20,7 @@ const FriendProfile = () => {
             </div>
             <div id="friendbuttonsflex">
                 <button>UnFriend</button>
-                <h3>Request Pending</h3>
+                <h3>Request</h3>
                 <button>Accept</button>
                 <button>Decline</button>
             </div>

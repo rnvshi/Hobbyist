@@ -21,18 +21,18 @@ const navBar = () => {
       <nav id="navflex">
 
         <div class="navbuttons">
-          <button>PROFILE</button>
+          <Link to="/profile"><button>PROFILE</button></Link>
         </div>
 
         <div class="navbuttons">
-          <button>FEED</button>
+          <Link to="/feed"><button>FEED</button></Link>
         </div>
 
         <div class="dropdown navbuttons">
           <button class="dropdown-button">ALBUM</button>
           <div class="dropdown-content">
             <a href="#">Create</a>
-            <a href="#">View</a>
+            <Link to="/albumview">View</Link>
 
           </div>
         </div>
@@ -44,9 +44,9 @@ const navBar = () => {
         <div class="dropdown navbuttons">
           <button class="dropdown-button">FRIENDS</button>
           <div class="dropdown-content">
-            <a href="#">Friend 1</a>
-            <a href="#">Friend 2</a>
-            <a href="#">Friend 3</a>
+            <Link to="/friendprofile">Friend 1</Link>
+            <Link to="/friendprofile">Friend 2</Link>
+            <Link to="/friendprofile">Friend 3</Link>
           </div>
         </div>
 
