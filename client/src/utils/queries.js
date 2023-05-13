@@ -19,3 +19,30 @@ query user($userId: ID!) {
     }
 }
 `;
+
+// GET all the information needed for Album gallery
+export const QUERY_GALLERY = gql`
+query AllPosts($albumName: String!) {
+    allPosts(albumName: $albumName) {
+      _id
+      postImg
+    }
+  }
+`;
+
+// GET all the information needed for a Post
+export const QUERY_POST = gql`
+query SinglePost($postId: ID!) {
+    singlePost(postId: $postId) {
+      _id
+      albumName
+      postImg
+      caption
+      comments {
+        _id
+        username
+        text
+      }
+    }
+  }
+`;
