@@ -166,6 +166,7 @@ const resolvers = {
         //friend mutations require non-stale context. currently, the context is not updated when the logged in user's properties are changed. This must be done somehow.
 
         //addFriend
+        //return for this is broken, but the mutation works
         addFriend: async (parent, {friendId}, context) => {
             //create friend object for user
             console.log(context.user)
@@ -219,7 +220,7 @@ const resolvers = {
             const friends = context.user.friends;
             const friend = friends.find((friend) => friend.friendId === friendId);
 
-            console.log(context.user);
+            // console.log(context.user);
 
             if(friend?.sender === false){
                 const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
@@ -229,14 +230,19 @@ const resolvers = {
                  { $pull: { friends: { friendId: context.user._id} } })
 
                  return user1;
+
             }else if (friend?.sender === true){
+
                 throw new AuthenticationError("Sender of friend request cannot decline!")
+
             }else{
+
                 throw new AuthenticationError("You are already friends!")
+
             }
         },
         //deleteFriend
-        //needs more testing
+        //works with pending friend atm -- should not?
         deleteFriend: async (parent, {friendId}, context) => {
 
             const friends = context.user.friends;
