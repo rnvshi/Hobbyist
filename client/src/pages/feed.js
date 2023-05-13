@@ -7,60 +7,34 @@ import PlaceholderImg from '../images/placeholderimg.png'
 const feed = () => {
   return (
     <div>
+      <div id="feed-container">
+        <div id="feedflex">
+          <div id="feedblock">
+            <div>
+              <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+            </div>
 
+            <div>
+              <p></p>
+              <h3 id="feed-comment-title">Comments:</h3>
+              <p></p>
+              <p></p>
+              <button id="like-button">Like</button>
+            </div>
+          </div>
 
-      <div class="feedflex">
-        <div>
-          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+          <div>
+            <div>
+              <h3 id="feed-titles">Username:</h3>
+
+              <h3>Caption:</h3>
+
+              <h3 id="feed-title">Created At:</h3>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>Username:</h3>
-          <p></p>
-          <h3>Caption:</h3>
-          <p></p>
-          <h3>Comments:</h3>
-          <p></p>
-          <h3>Created At:</h3>
-          <p></p>
-          <button>Like</button>
-        </div>
+
       </div>
-
-      <div class="feedflex">
-        <div>
-          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
-        </div>
-        <div>
-          <h3>Username:</h3>
-          <p></p>
-          <h3>Caption:</h3>
-          <p></p>
-          <h3>Comments:</h3>
-          <p></p>
-          <h3>Created At:</h3>
-          <p></p>
-          <button>Like</button>
-        </div>
-      </div>
-
-      <div class="feedflex">
-        <div>
-          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
-        </div>
-        <div>
-          <h3>Username:</h3>
-          <p></p>
-          <h3>Caption:</h3>
-          <p></p>
-          <h3>Comments:</h3>
-          <p></p>
-          <h3>Created At:</h3>
-          <p></p>
-          <button>Like</button>
-        </div>
-      </div>
-
-
     </div>
   )
 }

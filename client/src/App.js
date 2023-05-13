@@ -20,7 +20,7 @@ function App() {
   const user = true // Delete once replaced with real user
   return (
 
-    <div className="App">
+    <div className="App" id="page-container">
       <Router>
 
 
@@ -40,7 +40,7 @@ function App() {
               <Route path="/albumview" element={<Albumview />} />
 
             </Routes>
-            <Footer />
+            <Footer id="footer" />
           </> :
 
 
