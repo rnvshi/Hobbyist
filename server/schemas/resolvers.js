@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Album, Post } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -49,10 +50,8 @@ const resolvers = {
     Mutation: {
         createUser: async (parent, { firstName, lastName, userName, email, password }) => {
             const user = await User.create({ firstName, lastName, userName, email, password });
-
-            // remember to include code for sign token
-
-            return user;
+            const token = signToken(user);
+            return { token, user };
         },
 
         // remember to add context code to this after back-end is up and running
