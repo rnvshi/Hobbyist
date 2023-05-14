@@ -343,6 +343,30 @@ h3 {
   display: flex;
 }
 
+#friend-container {
+  border: 3px solid white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 500px;
+  background-color: #ccc;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.friendbuttons {
+  margin: 10px;
+}
+
+#unfriendbutton {
+  margin-right: 25px;
+}
+
+#requestpendingtext {
+  margin-left: 10px;
+}
+
 /*----Album View Page Alexia ---*/
 
 
@@ -365,6 +389,18 @@ h3 {
 
 #albumtext {
   color: white;
+
+}
+
+#albumbuttons {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+
+}
+
+.albumbutton {
+  margin-left: 10px;
 }
 
 /*----- Media Queries Alexia -----*/

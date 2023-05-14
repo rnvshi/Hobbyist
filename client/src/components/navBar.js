@@ -32,7 +32,7 @@ const navBar = () => {
           <button class="dropdown-button">ALBUM</button>
           <div class="dropdown-content">
             <a href="#">Create</a>
-            <Link to="/albumview">View</Link>
+
 
           </div>
         </div>

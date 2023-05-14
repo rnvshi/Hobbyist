@@ -3,6 +3,7 @@ import hobbylogo from '../images/hobbylogo.png'
 import Footer from '../components/footer'
 import PlaceholderImg from '../images/placeholderimg.png'
 import Navigation from '../components/navBar'
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -22,9 +23,10 @@ const Profile = () => {
       <h3 id="albumtext">Albums</h3>
 
       <div id="profilegalleries">
-        <img id="profileimggallery" src={PlaceholderImg}></img>
-        <img id="profileimggallery" src={PlaceholderImg}></img>
-        <img id="profileimggallery" src={PlaceholderImg}></img>
+        <Link to="/albumview"><img id="profileimggallery" src={PlaceholderImg}></img></Link>
+        <Link to="/albumview"><img id="profileimggallery" src={PlaceholderImg}></img></Link>
+        <Link to="/albumview"><img id="profileimggallery" src={PlaceholderImg}></img></Link>
+
       </div>
 
 

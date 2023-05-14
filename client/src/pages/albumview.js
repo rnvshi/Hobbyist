@@ -8,7 +8,12 @@ const albumView = () => {
     return (
         <div>
 
-            <h3 id="albumtext">Album</h3>
+            <h3 id="albumtext">Album:</h3>
+
+            <div id="albumbuttons">
+                <button class="albumbutton">Follow Album</button>
+                <button class="albumbutton">Unfollow Album</button>
+            </div>
 
             <div id="flexalbumview">
 

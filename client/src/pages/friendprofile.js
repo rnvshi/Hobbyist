@@ -6,27 +6,29 @@ import Navigation from '../components/navBar'
 
 const FriendProfile = () => {
     return (
-        <div>
+        <div id="friend-container">
 
             <div id="flexprofilebio">
                 <div >
+
                     <img id="profileimg" src={PlaceholderImg}></img>
                 </div>
 
                 <div id="profiletext">
                     <h3>Username:</h3>
                     <h3 id="biotext">Bio:</h3>
+                    <button id="unfriendbutton">UnFriend</button>
                 </div>
             </div>
             <div id="friendbuttonsflex">
-                <button>UnFriend</button>
-                <h3>Request</h3>
-                <button>Accept</button>
-                <button>Decline</button>
+
+                <h3 id="requestpendingtext">Request pending...</h3>
+                <button class="friendbuttons">Accept Request</button>
+                <button class="friendbuttons">Decline Request</button>
             </div>
 
-
         </div>
+
     )
 }
 
