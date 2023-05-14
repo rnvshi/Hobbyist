@@ -55,6 +55,7 @@ const typeDefs = gql`
     allAlbums(username: String!): [Album]
     allPosts(albumName: String!): [Post]
     singlePost(postId: ID!): Post
+    getFeed: User
   }
 
   type Mutation {
