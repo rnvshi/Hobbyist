@@ -97,8 +97,13 @@ const resolvers = {
         // will also delete albumIds from associated User document
         deleteAlbum: async (parent, { albumId }, context) => {
 
-            if(context.user.myAlbums.contains(albumId)){
-                const album = await Album.findOneAndDelete(
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const album = user.myAlbums.find((album) => album.albumId == albumId);
+
+            if(album){
+                const deletedalbum = await Album.findOneAndDelete(
                     { _id: albumId }
                 );
     
@@ -109,7 +114,7 @@ const resolvers = {
     
                 await Post.deleteMany({ albumName: album.albumName });
     
-                return album;
+                return deletedalbum;
             }else{
                 throw new AuthenticationError('User does not have an album with this id!');
             }
@@ -163,102 +168,140 @@ const resolvers = {
             return { token, user };
         },
 
-        //friend mutations require non-stale context. currently, the context is not updated when the logged in user's properties are changed. This must be done somehow.
+
 
         //addFriend
-        //return for this is broken, but the mutation works
         addFriend: async (parent, {friendId}, context) => {
-            //create friend object for user
-            console.log(context.user)
-            if(context.user){
-                const user = await User.updateOne({ _id: context.user._id}, 
-                    { $push: { friends: {friendId, sender: true, accepted: false}}})
-                //create friend object for friend
-                await User.updateOne({_id: friendId}, 
-                    { $push: { friends: { friendId: context.user._id, sender: false, accepted: false}} })
-                
-                return user;
+            //check if user is logged in
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
             }
-            return;
+
+            //check userId against friendId
+            if(context.user._id == friendId){
+                throw new AuthenticationError("You cannot add yourself as a friend!")
+            }
+
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+            //ensure that this friendId does not exist already inside user.friends
+
+            if(friend){
+                throw new AuthenticationError("This user is already your friend!")
+            }
+
+            //create friend object for user
+            const updatedUser = await User.findOneAndUpdate({ _id: context.user._id}, 
+                { $push: { friends: {friendId, sender: true, accepted: false}}}, { new: true})
+
+            //create friend object for friend
+            await User.updateOne({_id: friendId}, 
+                { $push: { friends: { friendId: context.user._id, sender: false, accepted: false}} })
+
+            return updatedUser;
         },
 
         //acceptFriend
         acceptFriend: async (parent, {friendId}, context) => {
 
-            const friends = context.user.friends;
-            const friend = friends.find((friend) => friend.friendId === friendId);
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
+            }
 
-            console.log(friend.sender)
-            
-            //check if user is the reciever of the friend request
-            if(friend?.sender === false){
-                
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+            //ensure that this friendId does not exist already inside user.friends
+
+            if(!friend){
+                throw new AuthenticationError("There is no pending friend request to accept!")
+            }
+
+            if(friend.sender === true){
+                throw new AuthenticationError('User must be receiver of request to accept!');
+            }
+
+            if(friend.sender === null){
+                throw new AuthenticationError('User is already your friend!');
+            }
+ 
                 //update user's friend object
                 const user1Friend = {friendId, accepted: true, sender: null}
                 const user1 = await User.findOneAndUpdate({ "_id": context.user._id, "friends.friendId": friendId }, 
-                { "friends.$": user1Friend })
+                { "friends.$": user1Friend }, { new: true})
                 
                 //update friend's friend object
                 const user2Friend = { friendId: context.user._id, accepted: true, sender: null}
                 const user2 = await User.findOneAndUpdate({ "_id": friendId, "friends.friendId": context.user._id }, 
                 { "friends.$": user2Friend })
     
-                // console.log(user);
                 return user1;
-
-            }else if(friend?.sender === true){
-                throw new AuthenticationError('User must be receiver of request to accept!');
-            }else{
-                throw new AuthenticationError('User is already your friend!');
-            }
         },
-
 
         //declineFriend
-        //needs more testing
-        declineFriend: async (parent, {friendId, context}) => {
-            const friends = context.user.friends;
-            const friend = friends.find((friend) => friend.friendId === friendId);
+        declineFriend: async (parent, {friendId}, context) => {
 
-            // console.log(context.user);
-
-            if(friend?.sender === false){
-                const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
-                 { $pull: { friends: { friendId: friendId} } })
-    
-                const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
-                 { $pull: { friends: { friendId: context.user._id} } })
-
-                 return user1;
-
-            }else if (friend?.sender === true){
-
-                throw new AuthenticationError("Sender of friend request cannot decline!")
-
-            }else{
-
-                throw new AuthenticationError("You are already friends!")
-
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
             }
+
+            const user = await User.findOne({_id: context.user._id})
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+
+            if(!friend){
+                throw new AuthenticationError("This user is not your friend!")
+            }
+
+            if(friend.sender === true){
+                throw new AuthenticationError("Sender of friend request cannot decline!")
+            }
+
+            if(friend.sender === null){
+                throw new AuthenticationError("You are already friends!")
+            }
+
+            //delete user1's friend object of user2
+            const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                    { $pull: { friends: { friendId: friendId} } }, { new: true})
+    
+            //delete user2's friend object of user1
+            const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                { $pull: { friends: { friendId: context.user._id} } })
+
+            return user1;
         },
+
         //deleteFriend
-        //works with pending friend atm -- should not?
         deleteFriend: async (parent, {friendId}, context) => {
 
-            const friends = context.user.friends;
-            const friend = friends.find((friend) => friend.friendId === friendId);
-
-            if(friend?.sender === null){
-                const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
-                 { $pull: { friends: { friendId: friendId} } })
-    
-                const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
-                 { $pull: { friends: { friendId: context.user._id} } })
-
-                 return user1;
-            }else{
-                throw new AuthenticationError("Friend request is still pending!")
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
             }
+
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+
+            if(!friend){
+                throw new AuthenticationError("This user is not your friend!")
+            }
+
+            if(friend.sender !== null){
+                throw new AuthenticationError("Friend request still pending!")
+            }
+
+            const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                { $pull: { friends: { friendId: friendId} } })
+
+            const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                { $pull: { friends: { friendId: context.user._id} } })
+
+            return user1;
         },
 
 
