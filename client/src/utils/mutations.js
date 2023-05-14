@@ -74,3 +74,25 @@ mutation DeleteComment($postId: ID!, $commentId: ID!) {
     }
   }
 `;
+
+export const FOLLOW_ALBUM = gql`
+mutation FollowAlbum($albumId: ID!) {
+  followAlbum(albumId: $albumId) {
+    _id
+    followedAlbums {
+      _id
+    }
+  }
+}
+`;
+
+export const UNFOLLOW_ALBUM = gql`
+mutation UnfollowAlbum($albumId: ID!) {
+  unfollowAlbum(albumId: $albumId) {
+    _id
+    followedAlbums {
+      _id
+    }
+  }
+}
+`;
