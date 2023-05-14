@@ -28,6 +28,10 @@ const resolvers = {
                 });
         },
 
+        singleUsername: async (parent, { username }) => {
+            return User.findOne({ userName: username });
+        },
+
         // GET all albums associated with a username
         // only postIds populate the posts field
         allAlbums: async (parent, { username }) => {
