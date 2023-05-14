@@ -20,6 +20,25 @@ query user($userId: ID!) {
 }
 `;
 
+export const QUERY_USERNAME = gql`
+query Query($username: String!) {
+  singleUsername(username: $username) {
+    _id
+    firstName
+    lastName
+    userName
+    pseudonym
+    avatar
+    bio
+    myAlbums {
+      _id
+      albumName
+      description
+    }
+  }
+}
+`;
+
 // GET all the information needed for Album gallery
 export const QUERY_GALLERY = gql`
 query AllPosts($albumName: String!) {
