@@ -48,9 +48,9 @@ const resolvers = {
     },
 
     Mutation: {
-        login: async (parent, { email, password }) => {
+        login: async (parent, { userName, password }) => {
 
-            const user = await User.findOne({ email });
+            const user = await User.findOne({ userName });
 
             if (!user) {
                 throw new AuthenticationError('No user found with this email address');
@@ -77,7 +77,6 @@ const resolvers = {
         // also later on can use context.user to populate username field here (or use userID)
         // this will populate the myAlbum field in the User collection with albumIds only
         createAlbum: async (parent, { albumName, description}, context) => {
-            console.log(context.user)
             const album = await Album.create({ albumName, description, username: context.user.userName });
 
             const user = await User.findOneAndUpdate(
@@ -89,8 +88,8 @@ const resolvers = {
         },
 
         // add authentication at some level to validate img dimensions (must be square)
-        createPost: async (parent, { postImg, caption, albumName, username }) => {
-            const post = await Post.create({ postImg, caption, albumName, username });
+        createPost: async (parent, { postImg, caption, albumName}, context) => {
+            const post = await Post.create({ postImg, caption, albumName, username: context.user.userName });
 
             const album = await Album.findOneAndUpdate(
                 { albumName: albumName },
@@ -101,12 +100,12 @@ const resolvers = {
         },
 
         // this will populate the comment field as a subdocument
-        createComment: async (parent, { username, postId, text }) => {
+        createComment: async (parent, { postId, text }, context) => {
             return Post.findOneAndUpdate(
                 { _id: postId },
                 {
                     $addToSet: {
-                        comments: { username, text },
+                        comments: { username: context.user.userName, text },
                     },
                 },
                 {
@@ -119,20 +118,29 @@ const resolvers = {
         // DELETE album given userId and albumId
         // will also delete associated posts inside album
         // will also delete albumIds from associated User document
-        deleteAlbum: async (parent, { userId, albumId }) => {
+        deleteAlbum: async (parent, { albumId }, context) => {
 
-            const album = await Album.findOneAndDelete(
-                { _id: albumId }
-            );
+            const user = await User.findOne({_id: context.user._id})
 
-            await User.findOneAndUpdate(
-                { _id: userId },
-                { $pull: { myAlbums: album._id } }
-            );
+            //find() will return undefined if friend with friendId is not found
+            const album = user.myAlbums.find((album) => album.albumId == albumId);
 
-            await Post.deleteMany({ albumName: album.albumName });
-
-            return album;
+            if(album){
+                const deletedalbum = await Album.findOneAndDelete(
+                    { _id: albumId }
+                );
+    
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { myAlbums: album._id } }
+                );
+    
+                await Post.deleteMany({ albumName: album.albumName });
+    
+                return deletedalbum;
+            }else{
+                throw new AuthenticationError('User does not have an album with this id!');
+            }
         },
 
         // DELETE comment given albumId and postId
@@ -180,26 +188,146 @@ const resolvers = {
             }
 
             const token = signToken(user);
-            console.log(user)
             return { token, user };
         },
 
-        // //addFriend
-        // addFriend: async (parent, {friendId}) => {
-            
-        // },
-        // //acceptFriend
-        // AcceptFriend: async (parent, {friendId}) => {
-            
-        // },
-        // //declineFriend
-        // declineFriend: async (parent, {friendId}) => {
-            
-        // },
-        // //deleteFriend
-        // deleteFriend: async (parent, {friendId}) => {
-            
-        // },
+
+
+        //addFriend
+        addFriend: async (parent, {friendId}, context) => {
+            //check if user is logged in
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
+            }
+
+            //check userId against friendId
+            if(context.user._id == friendId){
+                throw new AuthenticationError("You cannot add yourself as a friend!")
+            }
+
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+            //ensure that this friendId does not exist already inside user.friends
+
+            if(friend){
+                throw new AuthenticationError("This user is already your friend!")
+            }
+
+            //create friend object for user
+            const updatedUser = await User.findOneAndUpdate({ _id: context.user._id}, 
+                { $push: { friends: {friendId, sender: true, accepted: false}}}, { new: true})
+
+            //create friend object for friend
+            await User.updateOne({_id: friendId}, 
+                { $push: { friends: { friendId: context.user._id, sender: false, accepted: false}} })
+
+            return updatedUser;
+        },
+
+        //acceptFriend
+        acceptFriend: async (parent, {friendId}, context) => {
+
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
+            }
+
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+            //ensure that this friendId does not exist already inside user.friends
+
+            if(!friend){
+                throw new AuthenticationError("There is no pending friend request to accept!")
+            }
+
+            if(friend.sender === true){
+                throw new AuthenticationError('User must be receiver of request to accept!');
+            }
+
+            if(friend.sender === null){
+                throw new AuthenticationError('User is already your friend!');
+            }
+ 
+                //update user's friend object
+                const user1Friend = {friendId, accepted: true, sender: null}
+                const user1 = await User.findOneAndUpdate({ "_id": context.user._id, "friends.friendId": friendId }, 
+                { "friends.$": user1Friend }, { new: true})
+                
+                //update friend's friend object
+                const user2Friend = { friendId: context.user._id, accepted: true, sender: null}
+                const user2 = await User.findOneAndUpdate({ "_id": friendId, "friends.friendId": context.user._id }, 
+                { "friends.$": user2Friend })
+    
+                return user1;
+        },
+
+        //declineFriend
+        declineFriend: async (parent, {friendId}, context) => {
+
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
+            }
+
+            const user = await User.findOne({_id: context.user._id})
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+
+            if(!friend){
+                throw new AuthenticationError("This user is not your friend!")
+            }
+
+            if(friend.sender === true){
+                throw new AuthenticationError("Sender of friend request cannot decline!")
+            }
+
+            if(friend.sender === null){
+                throw new AuthenticationError("You are already friends!")
+            }
+
+            //delete user1's friend object of user2
+            const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                    { $pull: { friends: { friendId: friendId} } }, { new: true})
+    
+            //delete user2's friend object of user1
+            const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                { $pull: { friends: { friendId: context.user._id} } })
+
+            return user1;
+        },
+
+        //deleteFriend
+        deleteFriend: async (parent, {friendId}, context) => {
+
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!")
+            }
+
+            const user = await User.findOne({_id: context.user._id})
+
+            //find() will return undefined if friend with friendId is not found
+            const friend = user.friends.find((friend) => friend.friendId == friendId);
+
+            if(!friend){
+                throw new AuthenticationError("This user is not your friend!")
+            }
+
+            if(friend.sender !== null){
+                throw new AuthenticationError("Friend request still pending!")
+            }
+
+            const user1 = await User.findOneAndUpdate({ _id: context.user._id, "friends.friendId": friendId},
+                { $pull: { friends: { friendId: friendId} } })
+
+            const user2 = await User.findOneAndUpdate({ _id: friendId, "friends.friendId": context.user._id},
+                { $pull: { friends: { friendId: context.user._id} } })
+
+            return user1;
+        },
+
+
         // //likePost
         // likePost: async (parent, {postId}) => {
             
