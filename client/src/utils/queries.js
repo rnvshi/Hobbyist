@@ -46,3 +46,24 @@ query SinglePost($postId: ID!) {
     }
   }
 `;
+
+export const GET_FEED = gql`
+query Query {
+  getFeed {
+    followedAlbums {
+      _id
+      posts {
+        _id
+        albumName
+        postImg
+        caption
+        comments {
+          _id
+          username
+          text
+        }
+      }
+    }
+  }
+}
+`;

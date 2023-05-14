@@ -45,6 +45,18 @@ const resolvers = {
         // entire comment subdocument populates comment field
         singlePost: async (parent, { postId }) => {
             return Post.findOne({ _id: postId });
+        },
+
+        getFeed: async (parent, args, context) => {
+            let user = User.findOne({ _id: context.user._id })
+                .populate({
+                    path: 'followedAlbums',
+                    populate: {
+                        path: 'posts',
+                    }
+                });
+
+            return user;
         }
     },
 
