@@ -70,6 +70,8 @@ const typeDefs = gql`
     acceptFriend(friendId: ID!): User
     declineFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
+    followAlbum(albumId: ID!): User
+    unfollowAlbum(albumId: ID!): User
   }
 `;
 
