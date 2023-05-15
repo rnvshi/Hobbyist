@@ -29,25 +29,16 @@ const navBar = () => {
         </div>
 
         <div class="dropdown navbuttons">
-          <button class="dropdown-button">ALBUM</button>
-          <div class="dropdown-content">
-            <a href="#">Create</a>
+          <Link to="/albumcreate"><button class="dropdown-button">CREATE ALBUM</button></Link>
 
-
-          </div>
         </div>
 
         <div class="navbuttons">
           <Link to="/post"><button>POST</button></Link>
         </div>
 
-        <div class="dropdown navbuttons">
-          <button class="dropdown-button">FRIENDS</button>
-          <div class="dropdown-content">
-            <Link to="/friendprofile">Friend 1</Link>
-            <Link to="/friendprofile">Friend 2</Link>
-            <Link to="/friendprofile">Friend 3</Link>
-          </div>
+        <div class="navbuttons">
+          <Link to="/friendprofile"><button>FRIENDS</button></Link>
         </div>
 
         <div class="navbuttons">

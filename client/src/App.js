@@ -13,6 +13,7 @@ import Feed from "./pages/feed";
 import FriendProfile from "./pages/friendprofile";
 import Footer from "./components/footer";
 import Albumview from "./pages/albumview"
+import AlbumCreate from "./pages/albumcreate";
 // import { useQuery } from "apollo/client"
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
@@ -38,6 +39,7 @@ function App() {
               <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
               <Route path="/post" element={<Post />} />
               <Route path="/albumview" element={<Albumview />} />
+              <Route path="albumcreate" element={<AlbumCreate />} />
 
             </Routes>
             <Footer id="footer" />

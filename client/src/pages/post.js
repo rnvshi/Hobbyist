@@ -7,23 +7,32 @@ import PlaceholderImg from '../images/placeholderimg.png'
 
 const Post = () => {
   return (
-    <div>
+    <>
 
 
-      <div class="feedflex">
-        <div>
-          <img class="feedposts" id="profileimggallery" src={PlaceholderImg}></img>
+
+
+      <form id="postform" action="#" method="POST" enctype="multipart/form-data">
+
+        <div id="form-placement">
+
+          <input class="postinput" type="file" id="image-upload" name="image-upload" />
+          <br />
+
+          <label class="posttext">Add a caption:
+            <input class="postinput" type="text" name="text" /></label>
+
+          <br />
+          <input id="uploadimg" class="postinput" type="submit" value="Upload Image" />
+          <br />
+
         </div>
-        <div>
-          <h3>Username:</h3>
-          <p></p>
-          <h3>Caption:</h3>
-          <p></p>
-        </div>
-      </div>
+
+      </form>
 
 
-    </div>
+
+    </>
   )
 }
 
