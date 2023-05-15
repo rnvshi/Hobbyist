@@ -42,6 +42,7 @@ const resolvers = {
         // GET all posts associated with an album name
         // entire comment subdocument populates comment field
         allPosts: async (parent, { albumName }) => {
+
             return Post.find({ albumName });
         },
 
@@ -345,10 +346,28 @@ const resolvers = {
         },
 
 
-        // //likePost
-        // likePost: async (parent, {postId}) => {
+        //likePost
+        //will add like to post, or remove like if ID is present in array already
+        likePost: async (parent, {postId}, context) => {
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!");
+            }
 
-        // },
+            const post = await Post.findOne({_id: postId});
+
+            //checks if userId is already in like array, if it is, removes it
+            if(post.likes.some((like) => like == context.user._id)){
+                const updatedPost = await Post.findOneAndUpdate({ _id: postId}, { $pull: { likes: context.user._id }}, { new: true});
+
+
+                return updatedPost;
+            }else{
+                //userId is not in like array, add it
+                const updatedPost = await Post.findOneAndUpdate({ _id: postId}, { $push: { likes: { _id: context.user._id }}}, { new: true})
+    
+                return updatedPost;
+            }
+        },
 
         followAlbum: async (parent, { albumId }, context) => {
             if (!context.user) {
