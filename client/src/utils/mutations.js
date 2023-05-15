@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+mutation login($userName: String!, $password: String!) {
+    login(userName: $userName, password: $password) {
       token
       user {
         _id
-        username
+        userName
       }
     }
   }
@@ -25,34 +25,34 @@ mutation CreateUser($firstName: String!, $lastName: String!, $userName: String!,
 `;
 
 export const CREATE_ALBUM = gql`
-mutation CreateAlbum($albumName: String!, $username: String!, $description: String) {
-    createAlbum(albumName: $albumName, username: $username, description: $description) {
-      _id
-      albumName
-      description
-    }
+mutation createAlbum($albumName: String!, $description: String) {
+  createAlbum(albumName: $albumName, description: $description) {
+    _id
+    albumName
+    description
   }
+}
 `;
 
 export const CREATE_POST = gql`
-mutation CreatePost($postImg: String!, $caption: String!, $albumName: String!, $username: String!) {
-    createPost(postImg: $postImg, caption: $caption, albumName: $albumName, username: $username) {
+mutation CreatePost($postImg: String!, $caption: String!, $albumName: String!) {
+    createPost(postImg: $postImg, caption: $caption, albumName: $albumName) {
       _id
     }
   }
 `;
 
 export const CREATE_COMMENT = gql`
-mutation CreateComment($username: String!, $postId: String!, $text: String!) {
-    createComment(username: $username, postId: $postId, text: $text) {
+mutation CreateComment($postId: String!, $text: String!) {
+    createComment(postId: $postId, text: $text) {
       _id
     }
   }
 `;
 
 export const DELETE_ALBUM = gql`
-mutation DeleteAlbum($userId: ID!, $albumId: ID!) {
-    deleteAlbum(userId: $userId, albumId: $albumId) {
+mutation DeleteAlbum($albumId: ID!) {
+    deleteAlbum(albumId: $albumId) {
       _id
       albumName
     }
@@ -96,3 +96,70 @@ mutation UnfollowAlbum($albumId: ID!) {
   }
 }
 `;
+
+export const ADD_FRIEND = gql`
+mutation Mutation($friendId: ID!) {
+  addFriend(friendId: $friendId) {
+    _id
+    userName
+    friends {
+      friendId
+      sender
+      accepted
+    }
+  }
+}
+`;
+
+export const ACCEPT_FRIEND = gql`
+mutation AcceptFriend($friendId: ID!) {
+  acceptFriend(friendId: $friendId) {
+    _id
+    userName
+    friends {
+      friendId
+      sender
+      accepted
+    }
+  }
+}
+`;
+
+export const DELETE_FRIEND = gql`
+mutation Mutation($friendId: ID!) {
+  deleteFriend(friendId: $friendId) {
+    _id
+    userName
+    friends {
+      friendId
+      sender
+      accepted
+    }
+  }
+}
+`;
+
+export const DECLINE_FRIEND = gql`
+mutation Mutation($friendId: ID!) {
+  declineFriend(friendId: $friendId) {
+    _id
+    userName
+    friends {
+      friendId
+      sender
+      accepted
+    }
+  }
+}
+`;
+
+export const LIKE_POST = gql`
+mutation LikePost($postId: ID!) {
+  likePost(postId: $postId) {
+    _id
+    caption
+    likes
+  }
+}
+`;
+
