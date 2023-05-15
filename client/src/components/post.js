@@ -4,7 +4,13 @@ import React from 'react'
 
 const post = () => {
   return (
-    <div>post</div>
+    <form>
+      <div>
+        <label>Please add your post</label>
+      <input id="post"/>
+      </div>
+      <button type="submit">POST</button>
+    </form>
   )
 //
 
