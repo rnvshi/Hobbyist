@@ -346,9 +346,20 @@ const resolvers = {
 
 
         // //likePost
-        // likePost: async (parent, {postId}) => {
+        likePost: async (parent, {postId}, context) => {
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!");
+            }
 
-        // },
+            const post = await Post.findOne({_id: postId});
+
+            //check if likes has user Id already
+
+            const updatedPost = await Post.findOneAndUpdate({ _id: postId}, { $push: { likes: { _id: context.user._id }}})
+
+
+            return updatedPost;
+        },
 
         followAlbum: async (parent, { albumId }, context) => {
             if (!context.user) {
