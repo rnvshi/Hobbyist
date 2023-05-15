@@ -86,3 +86,38 @@ query Query {
   }
 }
 `;
+// Example of using multiple queries in one
+export const GET_FEED_PAGE_DATA = gql`
+query Query($userId: ID!) {
+  getFeed {
+    followedAlbums {
+      _id
+      posts {
+        _id
+        albumName
+        postImg
+        caption
+        comments {
+          _id
+          username
+          text
+        }
+      }
+    }
+  }
+  singleUser(userId: $userId) {
+    _id
+    firstName
+    lastName
+    userName
+    pseudonym
+    avatar
+    bio
+    myAlbums {
+      _id
+      albumName
+      description
+    }
+    }
+}
+`;
