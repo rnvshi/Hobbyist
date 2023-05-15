@@ -16,10 +16,11 @@ const AlbumCreate = () => {
 
                 <div id="form-placement">
 
-                    <input class="postinput" type="file" id="image-upload" name="image-upload" />
-                    <br />
+
 
                     <label class="posttext">Album name:
+                        <input class="postinput" type="text" name="text" /></label>
+                    <label class="posttext">Album Description:
                         <input class="postinput" type="text" name="text" /></label>
 
                     <br />
