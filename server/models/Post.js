@@ -10,9 +10,6 @@ const commentSchema = new Schema({
         type: String,
         required: true,
     }
-},
-{
-    timestamps: true,
 })
 
 const postSchema = new Schema({
@@ -44,20 +41,13 @@ const postSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'User',
             // unique: true,
-        }]
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        timestamps: true,
+        }],
+        createdAt: {
+            type: Date,
+            default: Date.now(),
+        }
     }
 )
-
-
-postSchema.virtual('totalLikes').get( function(){
-    return this.likes.length;
-})
 
 const Post = model('Post', postSchema);
 

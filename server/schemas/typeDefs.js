@@ -36,6 +36,8 @@ const typeDefs = gql`
     postImg: String!
     caption: String!
     comments: [Comment]
+    likes: [ID]
+    createdAt: String
   }
 
   type Comment {
@@ -74,6 +76,7 @@ const typeDefs = gql`
     deleteFriend(friendId: ID!): User
     followAlbum(albumId: ID!): User
     unfollowAlbum(albumId: ID!): User
+    likePost(postId: ID!): Post
   }
 `;
 
