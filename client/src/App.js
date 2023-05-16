@@ -41,7 +41,7 @@ const client = new ApolloClient({
 function App() {
   // const { data, loading, error } = useQuery(QueryMe)
   // const user = data?.me
-  const user = Auth.loggedIn() // Delete once replaced with real user
+  const user = Auth.loggedIn(); // Delete once replaced with real user
   return (
     <ApolloProvider client={client}>
       <div className="App" id="page-container">
