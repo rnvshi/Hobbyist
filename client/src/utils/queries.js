@@ -24,17 +24,9 @@ export const QUERY_USERNAME = gql`
 query Query($username: String!) {
   singleUsername(username: $username) {
     _id
-    firstName
-    lastName
     userName
-    pseudonym
     avatar
     bio
-    myAlbums {
-      _id
-      albumName
-      description
-    }
   }
 }
 `;
