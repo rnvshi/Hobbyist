@@ -4,7 +4,15 @@ import React from 'react'
 
 const postCard = () => {
   return (
-    <div>postCard</div>
+  
+       <form>
+      <div>
+        <label>Post</label>
+      <input id="post"/>
+      </div>
+     
+    </form>
+    
   )
 }
 
