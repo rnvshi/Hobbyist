@@ -54,6 +54,7 @@ const typeDefs = gql`
   type Query {
     allUsers: [User]
     singleUser(userId: ID!): User
+    me: User
     singleUsername(username: String!): User
     allAlbums(username: String!): [Album]
     allPosts(albumName: String!): [Post]

@@ -11,54 +11,54 @@ const albumView = () => {
             <h3 id="albumtext">Album:</h3>
 
             <div id="albumbuttons">
-                <button class="albumbutton">Follow Album</button>
-                <button class="albumbutton">Unfollow Album</button>
+                <button className="albumbutton">Follow Album</button>
+                <button className="albumbutton">Unfollow Album</button>
             </div>
 
             <div id="flexalbumview">
 
-                <div class="albumviewposts">
+                <div className="albumviewposts"> 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                 </div>
 
-                <div class="albumviewposts">
+                <div className="albumviewposts">
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
                 </div>
 
 
-                <div class="albumviewposts">
+                <div className="albumviewposts">
                     <div>
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
 
                     <div >
-                        <img class="albumviewimg" src={PlaceholderImg}></img>
+                        <img className="albumviewimg" src={PlaceholderImg}></img>
                     </div>
                 </div>
 

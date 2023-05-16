@@ -18,13 +18,13 @@ const AlbumCreate = () => {
 
 
 
-                    <label class="posttext">Album name:
-                        <input class="postinput" type="text" name="text" /></label>
-                    <label class="posttext">Album Description:
-                        <input class="postinput" type="text" name="text" /></label>
+                    <label className="posttext">Album name:
+                        <input className="postinput" type="text" name="text" /></label>
+                    <label className="posttext">Album Description:
+                        <input className="postinput" type="text" name="text" /></label>
 
                     <br />
-                    <input id="uploadimg" class="postinput" type="submit" value="Create Album" />
+                    <input id="uploadimg" className="postinput" type="submit" value="Create Album" />
                     <br />
 
                 </div>

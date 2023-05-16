@@ -28,7 +28,7 @@ const postSchema = new Schema({
         postImg: {
             type: String,
             required: true,
-            trim: true,
+            trim: true
             //default value?
         },
         caption: {

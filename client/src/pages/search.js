@@ -41,16 +41,16 @@ const Search = () => {
 
     <div>
 
-      <form class="search-container" onSubmit={handleSearchSubmit}>
+      <form className="search-container" onSubmit={handleSearchSubmit}>
         <input
           type="text"
           placeholder="Search Friend..."
-          class="search-input"
+          className="search-input"
           value={searchState.username}
           onChange={handleChange} />
         <button
           type="submit"
-          class="search-button">
+          className="search-button">
           Search</button>
       </form>
 
