@@ -20,6 +20,24 @@ query user($userId: ID!) {
 }
 `;
 
+export const QUERY_ME = gql`
+query me {
+  me {
+    _id
+    userName
+    bio
+    avatar
+    myAlbums {
+      _id
+      albumName
+      posts {
+        postImg
+      }
+    }
+  }
+}
+`
+
 export const QUERY_USERNAME = gql`
 query Query($username: String!) {
   singleUsername(username: $username) {

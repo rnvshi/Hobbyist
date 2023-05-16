@@ -23,8 +23,8 @@ const FriendProfile = () => {
             <div id="friendbuttonsflex">
 
                 <h3 id="requestpendingtext">Request pending...</h3>
-                <button class="friendbuttons">Accept Request</button>
-                <button class="friendbuttons">Decline Request</button>
+                <button className="friendbuttons">Accept Request</button>
+                <button className="friendbuttons">Decline Request</button>
             </div>
 
         </div>

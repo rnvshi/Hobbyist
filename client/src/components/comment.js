@@ -8,7 +8,6 @@ const comment = () => {
       <label>Comment</label>
     <input id="comment"/>
     </div>
-    <div>
     <button type="submit">COMMENT</button>
   </form>
   </div>

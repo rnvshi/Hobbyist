@@ -16,14 +16,14 @@ const Post = () => {
 
         <div id="form-placement">
 
-          <input class="postinput" type="file" id="image-upload" name="image-upload" />
+          <input className="postinput" type="file" id="image-upload" name="image-upload" />
           <br />
 
-          <label class="posttext">Add a caption:
-            <input class="postinput" type="text" name="text" /></label>
+          <label className="posttext">Add a caption:
+            <input className="postinput" type="text" name="text" /></label>
 
           <br />
-          <input id="uploadimg" class="postinput" type="submit" value="Upload Image" />
+          <input id="uploadimg" className="postinput" type="submit" value="Upload Image" />
           <br />
 
         </div>

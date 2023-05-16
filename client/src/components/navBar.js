@@ -3,6 +3,7 @@ import LoginPage from '../pages/login'
 import { Link } from "react-router-dom";
 import hobbylogo from '../images/hobbylogo.png'
 
+import Auth from '../utils/auth';
 
 const navBar = () => {
 
@@ -20,32 +21,32 @@ const navBar = () => {
 
       <nav id="navflex">
 
-        <div class="navbuttons">
-          <Link to="/profile"><button>PROFILE</button></Link>
+        <div className="navbuttons">
+          <Link to="/profile/me"><button>PROFILE</button></Link>
         </div>
 
-        <div class="navbuttons">
+        <div className="navbuttons">
           <Link to="/feed"><button>FEED</button></Link>
         </div>
 
-        <div class="dropdown navbuttons">
-          <Link to="/albumcreate"><button class="dropdown-button">CREATE ALBUM</button></Link>
+        <div className="dropdown navbuttons">
+          <Link to="/albumcreate"><button className="dropdown-button">CREATE ALBUM</button></Link>
 
         </div>
 
-        <div class="navbuttons">
+        <div className="navbuttons">
           <Link to="/post"><button>POST</button></Link>
         </div>
 
-        <div class="navbuttons">
+        <div className="navbuttons">
           <Link to="/friendprofile"><button>FRIENDS</button></Link>
         </div>
 
-        <div class="navbuttons">
+        <div className="navbuttons">
           <Link to="/search"> <button>SEARCH</button></Link>
         </div>
 
-        <div class="navbuttons">
+        <div className="navbuttons">
           <button onClick={logout}>LOGOUT</button>
         </div>
 
