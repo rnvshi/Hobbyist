@@ -20,9 +20,9 @@ const Feed = () => {
         <div id="feedflex">
           {feed && feed.followedAlbums.map(album =>
             album.posts.map(post => (<>
-              <div class="feedblock">
+              <div className="feedblock">
                 <div>
-                  <img class="feedposts" id="profileimggallery" src={post.postImg}></img>
+                  <img className="feedposts" id="profileimggallery" src={post.postImg}></img>
                 </div>
 
                 <div>
