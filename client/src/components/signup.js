@@ -14,16 +14,38 @@ const Signup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormState({
-      ...formState,
+    setFormState((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    try {
+    // Validate form inputs
+      if (
+        !formState.firstName ||
+        !formState.lastName ||
+        !formState.userName ||
+        !formState.email ||
+        !formState.password
+      ) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (formState.password.length < 8) {
+        alert('Password must be at least 8 characters long.');
+        return;
+      }
+  
+      if (formState.password.includes(' ')) {
+        alert('Password cannot contain spaces.');
+        return;
+      }
+    
+      try {
       const { data } = await signup({
         variables: { ...formState },
       });
@@ -31,6 +53,7 @@ const Signup = () => {
       Auth.login(data.createUser.token);
     } catch (e) {
       console.error(e);
+      alert('An error occurred during signup. Please try again.');
     }
 
     // clear form values

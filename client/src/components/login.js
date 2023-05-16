@@ -8,19 +8,27 @@ import Auth from '../utils/auth';
 const Login = () => {
   const [formState, setFormState] = useState({ userName: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormState({
-      ...formState,
+    setFormState((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    
+     // Validate form inputs
+     if (!formState.userName || !formState.password) {
+      alert('Please enter both user name and password.');
+      return;
+    }
+    
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -29,13 +37,18 @@ const Login = () => {
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
+      alert('Enter correct Username and Password.');
     }
 
     // clear form values
     setFormState({
-      email: '',
+      userName: '',
       password: '',
     });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -56,19 +69,28 @@ const Login = () => {
         </div>
         <div className="signup-fields">
           <label className="signup-form-label" id="password-login-form">Password</label>
+          <div className="password-input-container">
           <input 
           id="password-login-form"
           name='password'
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           value={formState.password}
           onChange={handleChange} 
            />
+           <button
+              type="button"
+              className="password-toggle-button"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+        </div>
         </div>
         <button id="signup-button" type="submit">LOG IN</button>
       </form>
     </div>
 
-  )
-}
+  );
+};
 
 export default Login
