@@ -47,9 +47,9 @@ const PostCard = ({ albumName, postId, postImg, caption, comments }) => {
         <h2 className="postCaption">{caption}</h2>
         <div className="commentContainer">
           {comments.map((comment, index) =>
-            <>
-              <p key={index}>{comment.username}     {comment.text}</p>
-            </>
+            <p className='userComment' key={index}>
+              <span id='userName'>{comment.username}   </span>
+              <span id='userText'>{comment.text}</span></p>
           )}
           <form onSubmit={handlePostComment}>
             <input className="commentText" placeholder='Add a comment...' onChange={handleChange}></input>

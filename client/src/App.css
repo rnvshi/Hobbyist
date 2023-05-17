@@ -490,3 +490,14 @@ h3 {
   margin-right: auto;
   text-align: left;
 }
+
+.userComment {
+  padding: 10px;
+  border-radius: 50px;
+  background-color: beige;
+  text-align: left;
+}
+
+#userName {
+  font-weight: 700;
+}
