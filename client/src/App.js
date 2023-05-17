@@ -15,7 +15,7 @@ import LoginPage from "./pages/login";
 import Feed from "./pages/feed";
 import FriendProfile from "./pages/friendprofile";
 import Footer from "./components/footer";
-import Albumview from "./pages/albumview"
+import Gallery from "./pages/gallery"
 import AlbumCreate from "./pages/albumcreate";
 // import { useQuery } from "apollo/client"
 
@@ -60,7 +60,7 @@ function App() {
                 <Route path="/search" element={<Search />} />
                 <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
                 <Route path="/createPost" element={<CreatePost />} />
-                <Route path="/albumview" element={<Albumview />} />
+                <Route path="/album/:albumId" element={<Gallery />} />
                 <Route path="albumcreate" element={<AlbumCreate />} />
                 <Route path="/*" element={<Feed />} />
 
