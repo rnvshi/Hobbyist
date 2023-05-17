@@ -27,44 +27,45 @@ const Search = () => {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
-    const { data } = await searchUsername({
+    const { searchData } = await searchUsername({
       variables: { ...searchState },
     });
-
-    console.log(data.singleUsername);
   };
+
 
   return (
 
     <>
       <div>
 
-        <form class="search-container" onSubmit={handleSearchSubmit}>
+        <form className="search-container" onSubmit={handleSearchSubmit}>
           <input
             type="text"
             placeholder="Search Friend..."
-            class="search-input"
+            className="search-input"
             value={searchState.username}
             onChange={handleChange} />
           <button
             type="submit"
-            class="search-button">
+            className="search-button">
             Search</button>
         </form>
 
         {data &&
 
-          <Link to={`/profile/${data.singleUsername._id}`}>
+          <Link to={`/profile/${data?.singleUsername._id}`}>
             <div className="render-card">
-              <img id="avatar" src={data.singleUsername.avatar}></img>
-              <p>{data.singleUsername.userName}</p>
-              <p>{data.singleUsername.bio}</p>
+              <img id="avatar" src={data?.singleUsername.avatar}></img>
+              <p>{data?.singleUsername.userName}</p>
+              <p>{data?.singleUsername.bio}</p>
             </div>
           </Link>
+
         }
 
       </div>
     </>
+
   );
 };
 

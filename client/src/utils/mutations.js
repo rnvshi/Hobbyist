@@ -163,3 +163,12 @@ mutation LikePost($postId: ID!) {
 }
 `;
 
+export const UPDATE_USER = gql`
+mutation updateUser($bio: String!) {
+  updateUser(bio: $bio) {
+    userName
+    _id
+    bio
+  }
+}
+`;

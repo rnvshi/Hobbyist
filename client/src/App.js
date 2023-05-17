@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@ap
 import './App.css';
 import { setContext } from "@apollo/client/link/context"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Post from "./pages/post"
+import CreatePost from "./pages/createPost"
 import Profile from './pages/profile';
 //import Login from './components/login';
 //import Signup from './components/signup';
@@ -15,8 +15,9 @@ import LoginPage from "./pages/login";
 import Feed from "./pages/feed";
 import FriendProfile from "./pages/friendprofile";
 import Footer from "./components/footer";
-import Albumview from "./pages/albumview"
+import Gallery from "./pages/gallery"
 import AlbumCreate from "./pages/albumcreate";
+import Post from './pages/post';
 // import { useQuery } from "apollo/client"
 
 const httpLink = createHttpLink({
@@ -58,11 +59,14 @@ function App() {
                 <Route path="/profile/me" element={<Profile />} />
                 <Route path="/profile/:userId" element={<Profile />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/feed" element={<Feed />} />
                 <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
-                <Route path="/post" element={<Post />} />
-                <Route path="/albumview" element={<Albumview />} />
-                <Route path="albumcreate" element={<AlbumCreate />} />
+                <Route path="/createPost" element={<CreatePost />} />
+                <Route path="/album/:albumId" element={<Gallery />} />
+                <Route path="/albumcreate" element={<AlbumCreate />} />
+                <Route path="/post/:postId" element={<Post />} />
+                <Route path="/*" element={<Feed />} />
+
+
 
               </Routes>
               <Footer id="footer" />
