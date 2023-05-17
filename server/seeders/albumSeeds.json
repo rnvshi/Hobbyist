@@ -1,20 +1,74 @@
 [
     {
-        "username": "HobbsI43T",
-        "albumName": "Birds",
-        "description": "A collection of posts about interesting birds.",
-        "posts": []
+      "username": "JohnnyD",
+      "albumName": "Wildlife Photography",
+      "description": "A collection of my wildlife photography adventures.",
+      "posts": []
     },
     {
-        "username": "JohnnyD",
-        "albumName": "Architectural Paintings",
-        "description": "Some architectural paintings that look neat.",
-        "posts": []
+      "username": "JohnnyD",
+      "albumName": "Nature Walks",
+      "description": "Moments captured during my peaceful nature walks.",
+      "posts": []
     },
     {
-        "username": "HobbsI43T",
-        "albumName": "Birds",
-        "description": "MY collection of interesting birds.",
-        "posts": []
+      "username": "HobbsI43T",
+      "albumName": "Favorite Books",
+      "description": "A compilation of my favorite books across various genres.",
+      "posts": []
+    },
+    {
+      "username": "HobbsI43T",
+      "albumName": "Movie Recommendations",
+      "description": "Sharing my top movie recommendations and reviews.",
+      "posts": []
+    },
+    {
+      "username": "SarahJ",
+      "albumName": "Active Lifestyle",
+      "description": "Moments captured during my active lifestyle pursuits.",
+      "posts": []
+    },
+    {
+      "username": "SarahJ",
+      "albumName": "Dog Adventures",
+      "description": "Adventures and fun moments with my furry companion.",
+      "posts": []
+    },
+    {
+      "username": "MarkW",
+      "albumName": "Gaming Moments",
+      "description": "Memorable moments and experiences from my gaming adventures.",
+      "posts": []
+    },
+    {
+      "username": "MarkW",
+      "albumName": "Tech Gadgets",
+      "description": "Exploring and showcasing the latest tech gadgets in the market.",
+      "posts": []
+    },
+    {
+      "username": "JessT",
+      "albumName": "Artistic Inspirations",
+      "description": "Capturing the beauty of art and finding inspiration in everyday life.",
+      "posts": []
+    },
+    {
+      "username": "JessT",
+      "albumName": "Photography Journey",
+      "description": "A visual documentation of my photography journey and experiments.",
+      "posts": []
+    },
+    {
+      "username": "DavidG",
+      "albumName": "Musical Journey",
+      "description": "A collection of my musical journey and guitar playing endeavors.",
+      "posts": []
+    },
+    {
+      "username": "DavidG",
+      "albumName": "Concert Experiences",
+      "description": "Memories and highlights from the live music concerts I've attended.",
+      "posts": []
     }
-]
+  ]

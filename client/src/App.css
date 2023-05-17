@@ -1,3 +1,4 @@
+/* App */
 .App {
   text-align: center;
 }
@@ -32,17 +33,15 @@
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
 }
 
 
-/*------ Styling Alexia -----*/
+/* Styling Alexia */
 
-/*---Footer Positioning--*/
-
+/* Footer Positioning */
 #page-container {
   position: relative;
   min-height: 100vh;
@@ -53,29 +52,28 @@
   bottom: 0;
   width: 100%;
   height: 1rem;
-
-
 }
 
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-/*-- SignUp Form --*/
-
+/* SignUp Form */
 .signup-fields {
   padding: 10px;
-
-
 }
 
 #signup-form {
   margin-top: 60px;
-
-
 }
 
 #email-label {
   padding-right: 60px;
   font-size: 25px;
-
 }
 
 #password-label {
@@ -94,7 +92,6 @@
   border-radius: 10px;
   background-color: white;
   font-size: 20px;
-
 }
 
 #signup-button:hover {
@@ -107,15 +104,13 @@
 #logo-img {
   border-radius: 50%;
   margin-top: 30px;
-
 }
 
 #login-here {
   font-weight: 500;
 }
 
-/*--Login Form --*/
-
+/* Login Form */
 #password-login-form {
   margin-right: 10px;
 }
@@ -133,8 +128,7 @@
   color: black;
 }
 
-/*--Profile Page Alexia --*/
-
+/* Profile Page Alexia */
 #logo-img-profile {
   max-width: 100px;
   border-radius: 50%;
@@ -147,12 +141,11 @@
   border: 5px solid white;
   margin-left: 50px;
   border-radius: 50%;
-
 }
 
 #profileimggallery {
-  width: 200px;
-  height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   padding: 10px;
   margin: 5px;
   border: 5px solid white;
@@ -160,7 +153,6 @@
 
 #flexprofilebio {
   display: flex;
-
 }
 
 #profiletext {
@@ -174,7 +166,6 @@
 
 #footer {
   color: white;
-
 }
 
 #biotext {
@@ -186,9 +177,7 @@
   font-size: 40px;
 }
 
-
-/*--NavBar Alexia--*/
-
+/* NavBar Alexia */
 #navflex {
   display: flex;
   justify-content: center;
@@ -200,10 +189,7 @@
   padding-left: 5px;
 }
 
-
-
-/*--Search Page--*/
-
+/* Search Page */
 .search-container {
   display: flex;
   align-items: center;
@@ -211,7 +197,6 @@
   margin-top: 20px;
 }
 
-/* Style the search input */
 .search-input {
   padding: 10px;
   border-radius: 5px;
@@ -222,22 +207,18 @@
   margin-right: 10px;
 }
 
-/* Style the search button */
 .search-button {
   background-color: #ccc;
   border: solid black 1px;
   padding: 10px;
-
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
 }
 
-/* Change search button color on hover */
 .search-button:hover {
   background-color: #a4fc7b;
   color: black;
-
 }
 
 
@@ -248,7 +229,6 @@
   margin-right: auto !important;
   margin-left: auto !important;
   margin-bottom: 20px !important;
-
 }
 
 #profileimggallery {
@@ -264,8 +244,6 @@
   margin-top: 1rem;
   max-width: 500px;
   background-color: #ccc;
-
-
 }
 
 .feedblock {
@@ -296,15 +274,14 @@ h3 {
 #like-button {
   float: left;
   font-size: 20px;
-
 }
 
-/*--- Friend Profile ---*/
-
+/* Friend Profile */
 #friendbuttonsflex {
   display: flex;
 }
 
+/* Friend Profile */
 #friend-container {
   border: 3px solid white;
   padding-top: 20px;
@@ -314,8 +291,6 @@ h3 {
   margin-left: auto;
   margin-right: auto;
 }
-
-
 
 .friendbuttons {
   margin: 10px;
@@ -329,9 +304,7 @@ h3 {
   margin-left: 10px;
 }
 
-/*----Album View Page Alexia ---*/
-
-
+/* Album View Page Alexia */
 .albumviewposts {
   padding-bottom: 20px;
   padding-right: 5px;
@@ -340,7 +313,6 @@ h3 {
 #flexalbumview {
   display: flex;
   justify-content: center;
-
 }
 
 .albumviewimg {
@@ -351,22 +323,19 @@ h3 {
 
 #albumtext {
   color: white;
-
 }
 
 #albumbuttons {
   display: flex;
   justify-content: center;
   margin: 10px;
-
 }
 
 .albumbutton {
   margin-left: 10px;
 }
 
-/*-- Post Page Alexia --*/
-
+/* Post Page Alexia */
 .posttext {
   color: white;
 }
@@ -437,41 +406,7 @@ h3 {
   cursor: pointer;
 }
 
-
-/*----- Media Queries Alexia -----*/
-
-@media screen and (max-width:375px) {
-
-  /*--SignUp Form--*/
-
-  #logo-img-div {
-    display: flex;
-
-  }
-
-  #logo-img {
-    justify-content: center;
-    padding-left: 20px;
-
-  }
-
-  #signup-form-flex {
-    display: flex;
-  }
-
-  #signup-form {
-    justify-content: center;
-  }
-
-  #userName,
-  #email,
-  #password {
-    max-width: 130px;
-  }
-}
-
-/* postCard styling */
-
+/* Common Styles */
 .postCard {
   height: 100%;
   width: 80%;
@@ -501,4 +436,178 @@ h3 {
 
 #userName {
   font-weight: 700;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 375px) {
+  /* Sign Up Form */
+  .signup-fields,
+  #signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #signup-form {
+    margin-top: 30px;
+  }
+
+  /* Profile Page */
+  #logo-img-profile {
+    margin-top: 20px;
+  }
+
+  #profileimg {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px; /* Added margin-right to move the image to the left */
+  }
+
+  
+#profiletext {
+  margin-left: 30px;
+  color: white;
+}
+
+  /* Navigation Bar */
+  #navflex {
+    flex-wrap: wrap;
+  }
+
+  .navbuttons {
+    padding: 5px;
+  }
+
+  /* Search Page */
+  .search-container {
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .search-button {
+    margin-top: 10px;
+  }
+
+  /* Feed Page */
+  #feedflex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Friend Profile */
+  #friend-container {
+    padding: 10px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Album View Page */
+  .albumviewimg {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  /* Post Page */
+  .postCard {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #postform {
+    width: 90%; /* Reduce the width to fit smaller screens */
+  }
+
+  .postinput {
+    margin: 5px; /* Adjust the margin for smaller spacing */
+  }
+
+  #uploadimg {
+    margin-right: 0; /* Remove the right margin on smaller screens */
+  }
+
+  .posttext {
+    margin-left: 10px; /* Adjust the margin for smaller screens */
+  }
+
+  /* Sign Up Form */
+  .signup-fields,
+  #signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #signup-form {
+    margin-top: 30px;
+  }
+
+    /* Profile Page */
+    #logo-img-profile {
+      margin-top: 20px;
+    }
+  
+    #profileimg {
+      margin-left: 10px; /* Adjusted margin-left to create more space */
+      max-width: 150px; /* Reduced max-width to fit smaller screens */
+      max-height: 150px; /* Reduced max-height to fit smaller screens */
+    }
+
+    #profiletext {
+      margin-left: 10px; /* Adjusted margin-left to create more space */
+      max-width: 250px; /* Reduced max-width to prevent overflow */
+      text-align: center;
+    }
+  
+  /* Navigation Bar */
+  .navbuttons {
+    padding-left: 2px;
+  }
+
+  /* Search Page */
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .search-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  /* Feed Page */
+  #feedflex {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  /* Friend Profile */
+  #friend-container {
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  /* Album View Page */
+  .albumviewimg {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  /* Post Page */
+  .postCard {
+    width: 90%;
+  }
 }
