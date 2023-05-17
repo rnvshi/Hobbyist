@@ -17,6 +17,7 @@ import FriendProfile from "./pages/friendprofile";
 import Footer from "./components/footer";
 import Gallery from "./pages/gallery"
 import AlbumCreate from "./pages/albumcreate";
+import Post from './pages/post';
 // import { useQuery } from "apollo/client"
 
 const httpLink = createHttpLink({
@@ -61,8 +62,10 @@ function App() {
                 <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
                 <Route path="/createPost" element={<CreatePost />} />
                 <Route path="/album/:albumId" element={<Gallery />} />
-                <Route path="albumcreate" element={<AlbumCreate />} />
+                <Route path="/albumcreate" element={<AlbumCreate />} />
+                <Route path="/post/:postId" element={<Post />} />
                 <Route path="/*" element={<Feed />} />
+
 
 
               </Routes>
