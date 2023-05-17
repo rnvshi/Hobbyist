@@ -468,3 +468,36 @@ h3 {
     max-width: 130px;
   }
 }
+
+/* postCard styling */
+
+.postCard {
+  height: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.postContent {
+  background: white;
+  padding: 20px;
+}
+
+.postImg,
+.postCaption {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.userComment {
+  padding: 10px;
+  border-radius: 50px;
+  background-color: beige;
+  text-align: left;
+}
+
+#userName {
+  font-weight: 700;
+}
