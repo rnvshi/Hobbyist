@@ -99,6 +99,7 @@ query Query {
     followedAlbums {
       _id
       username
+      albumName
       posts {
         _id
         albumName
