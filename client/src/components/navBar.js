@@ -35,7 +35,7 @@ const navBar = () => {
         </div>
 
         <div className="navbuttons">
-          <Link to="/post"><button>POST</button></Link>
+          <Link to="/createPost"><button>POST</button></Link>
         </div>
 
         <div className="navbuttons">
