@@ -221,7 +221,9 @@
   color: black;
 }
 
-/* Feed Page */
+
+/*--Feed Page--*/
+
 .feedposts {
   display: block;
   margin-right: auto !important;
@@ -233,10 +235,13 @@
   padding: 0 !important;
 }
 
-#feedflex {
-  display: flex;
+
+.feedflex {
+  display: block;
   border: 3px solid white;
   padding: 10px;
+  margin: auto;
+  margin-top: 1rem;
   max-width: 500px;
   background-color: #ccc;
 }
@@ -246,7 +251,7 @@
 }
 
 #feed-container {
-  display: flex;
+  display: block;
   justify-content: center;
 }
 
