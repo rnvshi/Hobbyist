@@ -54,6 +54,14 @@
   height: 1rem;
 }
 
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 /* SignUp Form */
 .signup-fields {
   padding: 10px;
@@ -268,6 +276,7 @@ h3 {
   display: flex;
 }
 
+/* Friend Profile */
 #friend-container {
   border: 3px solid white;
   padding-top: 20px;
@@ -392,42 +401,72 @@ h3 {
   cursor: pointer;
 }
 
+/* Common Styles */
+.postCard {
+  height: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/*----- Media Queries Alexia -----*/
+.postContent {
+  background: white;
+  padding: 20px;
+}
 
-@media screen and (max-width:375px) {
+.postImg,
+.postCaption {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
 
-  /*--SignUp Form--*/
+.userComment {
+  padding: 10px;
+  border-radius: 50px;
+  background-color: beige;
+  text-align: left;
+}
 
-  #logo-img-div {
+#userName {
+  font-weight: 700;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 375px) {
+  /* Sign Up Form */
+  .signup-fields,
+  #signup-form {
     display: flex;
-  }
-
-  #logo-img {
-    justify-content: center;
-    padding-left: 20px;
-  }
-
-  #signup-form-flex {
-    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   #signup-form {
-    justify-content: center;
+    margin-top: 30px;
   }
 
-  #userName,
-  #email,
-  #password {
-    max-width: 130px;
+  /* Profile Page */
+  #logo-img-profile {
+    margin-top: 20px;
   }
 
-  /* Profile Page Alexia */
   #profileimg {
-    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px; /* Added margin-right to move the image to the left */
   }
 
-  /* NavBar Alexia */
+  
+#profiletext {
+  margin-left: 30px;
+  color: white;
+}
+
+  /* Navigation Bar */
   #navflex {
     flex-wrap: wrap;
   }
@@ -458,49 +497,112 @@ h3 {
   /* Friend Profile */
   #friend-container {
     padding: 10px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Album View Page Alexia */
+  /* Album View Page */
+  .albumviewimg {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  /* Post Page */
+  .postCard {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #postform {
+    width: 90%; /* Reduce the width to fit smaller screens */
+  }
+
+  .postinput {
+    margin: 5px; /* Adjust the margin for smaller spacing */
+  }
+
+  #uploadimg {
+    margin-right: 0; /* Remove the right margin on smaller screens */
+  }
+
+  .posttext {
+    margin-left: 10px; /* Adjust the margin for smaller screens */
+  }
+
+  /* Sign Up Form */
+  .signup-fields,
+  #signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #signup-form {
+    margin-top: 30px;
+  }
+
+    /* Profile Page */
+    #logo-img-profile {
+      margin-top: 20px;
+    }
+  
+    #profileimg {
+      margin-left: 10px; /* Adjusted margin-left to create more space */
+      max-width: 150px; /* Reduced max-width to fit smaller screens */
+      max-height: 150px; /* Reduced max-height to fit smaller screens */
+    }
+
+    #profiletext {
+      margin-left: 10px; /* Adjusted margin-left to create more space */
+      max-width: 250px; /* Reduced max-width to prevent overflow */
+      text-align: center;
+    }
+  
+  /* Navigation Bar */
+  .navbuttons {
+    padding-left: 2px;
+  }
+
+  /* Search Page */
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .search-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  /* Feed Page */
+  #feedflex {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  /* Friend Profile */
+  #friend-container {
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  /* Album View Page */
   .albumviewimg {
     max-width: 150px;
     max-height: 150px;
   }
 
-  /* Post Page Alexia */
-  #postform {
-    max-width: 350px;
+  /* Post Page */
+  .postCard {
+    width: 90%;
   }
-}
-
-/* postCard styling */
-
-.postCard {
-  height: 100%;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.postContent {
-  background: white;
-  padding: 20px;
-}
-
-.postImg,
-.postCaption {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-
-.userComment {
-  padding: 10px;
-  border-radius: 50px;
-  background-color: beige;
-  text-align: left;
-}
-
-#userName {
-  font-weight: 700;
 }
