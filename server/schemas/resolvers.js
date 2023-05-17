@@ -30,12 +30,16 @@ const resolvers = {
 
         me: async (parent, args, context) => {
             return User.findOne({ _id: context.user._id })
-                .populate({
-                    path: 'myAlbums',
-                    populate: {
-                        path: 'posts'
-                    }
-                });
+                .populate(
+                    [{
+                        path: 'myAlbums',
+                        populate: {
+                            path: 'posts'
+                        }
+                    }, {
+                        path: 'followedAlbums'
+                    }]
+                );
         },
 
         singleUsername: async (parent, { username }) => {

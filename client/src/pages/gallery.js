@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import hobbylogo from '../images/hobbylogo.png'
 import Footer from '../components/footer'
 import PlaceholderImg from '../images/placeholderimg.png'
 import Navigation from '../components/navBar';
-import { QUERY_GALLERY } from '../utils/queries';
+import { QUERY_GALLERY, QUERY_ME } from '../utils/queries';
 import { FOLLOW_ALBUM, UNFOLLOW_ALBUM } from '../utils/mutations';
 import { useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, useLazyQuery } from '@apollo/client';
 import { Link } from "react-router-dom";
+import Auth from '../utils/auth';
 
 const Gallery = () => {
 
@@ -20,6 +21,20 @@ const Gallery = () => {
 
     const posts = data?.singleAlbum?.posts;
 
+    const { loading: loadMe, data: dataMe } = useQuery(QUERY_ME);
+
+    let isFollowing = null;
+    if (dataMe) {
+        const userFollowedAlbums = dataMe?.me?.followedAlbums;
+
+        if (userFollowedAlbums.some(e => e._id === albumId)) {
+            isFollowing = true;
+
+        } else {
+            isFollowing = false;
+        }
+    }
+
     const [followAlbum] = useMutation(FOLLOW_ALBUM);
     const [unfollowAlbum] = useMutation(UNFOLLOW_ALBUM);
 
@@ -30,22 +45,16 @@ const Gallery = () => {
             const { data } = await followAlbum({
                 variables: { albumId: albumId }
             });
-
-            console.log(data);
         } catch (e) {
             console.error(e);
         }
     }
 
     const handleUnfollowAlbum = async (event) => {
-        console.log('unfollow this album');
-
         try {
             const { data } = await unfollowAlbum({
                 variables: { albumId: albumId }
             });
-
-            console.log(data);
         } catch (e) {
             console.error(e);
         }
@@ -65,8 +74,12 @@ const Gallery = () => {
                 <h3 id="albumtext">Album:</h3>
 
                 <div id="albumbuttons">
-                    <button className="albumbutton" onClick={handleFollowAlbum}>Follow Album</button>
-                    <button className="albumbutton" onClick={handleUnfollowAlbum}>Unfollow Album</button>
+                    {isFollowing === true ?
+                        <button className="albumbutton" onClick={handleUnfollowAlbum}>Unfollow Album</button>
+                        :
+                        <button className="albumbutton" onClick={handleFollowAlbum}>Follow Album</button>
+                    }
+
                 </div>
 
                 <div id="flexalbumview">

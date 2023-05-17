@@ -29,7 +29,7 @@ query user($userId: ID!) {
 `;
 
 export const QUERY_ME = gql`
-query me {
+query Me {
   me {
     _id
     userName
@@ -39,8 +39,12 @@ query me {
       _id
       albumName
       posts {
+        _id
         postImg
       }
+    }
+    followedAlbums {
+      _id
     }
   }
 }
