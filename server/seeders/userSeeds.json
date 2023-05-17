@@ -1,21 +1,63 @@
 [
     {
-        "firstName": "John",
-        "lastName": "Doe",
-        "userName": "JohnnyD",
-        "email": "johnD1544@email.com",
-        "password": "123asd123",
-        "myAlbums": []
+      "firstName": "John",
+      "lastName": "Doe",
+      "userName": "JohnnyD",
+      "email": "johnD1544@email.com",
+      "password": "123asd123",
+      "myAlbums": [],
+      "avatar": "https://example.com/animal-image1.jpg",
+      "bio": "Animal lover and outdoor enthusiast. In my free time, I enjoy hiking, birdwatching, and photographing wildlife."
     },
     {
-        "firstName": "Hobbs",
-        "lastName": "Iest",
-        "userName": "HobbsI43T",
-        "email": "Hobbs@email.com",
-        "password": "hobbyist",
-        "myAlbums": [],
-        "pseudonym": "Hobbs",
-        "bio": "Just a person who likes sharing their hobbies.",
-        "avatar": "https://upload.wikimedia.org/wikipedia/commons/d/df/Eurasian_hobby_%28Falco_subbuteo%29_by_Shantanu_Kuveskar.jpg"
+      "firstName": "Hobbs",
+      "lastName": "Iest",
+      "userName": "HobbsI43T",
+      "email": "hobbs@example.com",
+      "password": "hobbyist",
+      "myAlbums": [],
+      "pseudonym": "Hobbs",
+      "bio": "Avid reader and movie buff. I love exploring different genres and discussing them with fellow enthusiasts.",
+      "avatar": "https://example.com/animal-image2.jpg"
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "userName": "SarahJ",
+      "email": "sarah.johnson@example.com",
+      "password": "password123",
+      "myAlbums": [],
+      "avatar": "https://www.google.ca/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fphoto%2Fa-woman-in-brown-sweater-hugging-her-dog-6801930%2F&psig=AOvVaw1r0bEDlpqeaQOlWBbSUBGE&ust=1684395626331000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIjr2-rs-_4CFQAAAAAdAAAAABAE",
+      "bio": "Fitness enthusiast and dog lover. I enjoy staying active through various workouts and spending time outdoors with my furry companion."
+    },
+    {
+      "firstName": "Mark",
+      "lastName": "Wilson",
+      "userName": "MarkW",
+      "email": "mark.wilson@example.com",
+      "password": "securepass",
+      "myAlbums": [],
+      "avatar": "https://tech4gamers.com/wp-content/uploads/2021/08/Online-Gaming-Experience.jpg",
+      "bio": "Tech geek and gamer. From building PCs to exploring virtual worlds, I'm passionate about all things tech and gaming."
+    },
+    {
+      "firstName": "Jessica",
+      "lastName": "Thompson",
+      "userName": "JessT",
+      "email": "jessica.thompson@example.com",
+      "password": "jessica123",
+      "myAlbums": [],
+      "avatar": "https://www.google.ca/url?sa=i&url=https%3A%2F%2Fwww.happyknits.com%2Fart-appreciation-art-movements-to-know%2F&psig=AOvVaw1MNRDLv7sLJuH-Nbm4JG5u&ust=1684395826721000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCOiU9Mnt-_4CFQAAAAAdAAAAABAF",
+      "bio": "Art lover and creative soul. Whether it's painting, drawing, or photography, I find inspiration in the beauty of the world around us."
+    },
+    {
+      "firstName": "David",
+      "lastName": "Garcia",
+      "userName": "DavidG",
+      "email": "david.garcia@example.com",
+      "password": "password456",
+      "myAlbums": [],
+      "avatar": "https://images.squarespace-cdn.com/content/v1/59e15f7090bade612733fffe/1617985833562-HG074E5MS5BPFYTPZXRS/Hamish+by+Ted+Eytan+hi+res3.jpg",
+      "bio": "Music enthusiast and aspiring guitarist. I enjoy exploring different genres and creating melodies that resonate with the soul."
     }
-]
+  ]
