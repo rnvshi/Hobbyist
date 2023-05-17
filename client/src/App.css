@@ -472,7 +472,6 @@ h3 {
 /* postCard styling */
 
 .postCard {
-  border: solid red 1px;
   height: 100%;
   width: 80%;
   margin-left: auto;
@@ -480,7 +479,6 @@ h3 {
 }
 
 .postContent {
-  border: solid blue 1px;
   background: white;
   padding: 20px;
 }
