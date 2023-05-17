@@ -98,11 +98,14 @@ query Query {
   getFeed {
     followedAlbums {
       _id
+      username
       posts {
         _id
         albumName
         postImg
         caption
+        createdAt
+        likes
         comments {
           _id
           username
