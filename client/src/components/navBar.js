@@ -38,9 +38,9 @@ const navBar = () => {
           <Link to="/createPost"><button>POST</button></Link>
         </div>
 
-        <div className="navbuttons">
-          <Link to="/friendprofile"><button>FRIENDS</button></Link>
-        </div>
+//         <div className="navbuttons">
+//           <Link to="/friendprofile"><button>FRIENDS</button></Link>
+//         </div>
 
         <div className="navbuttons">
           <Link to="/search"> <button>SEARCH</button></Link>
