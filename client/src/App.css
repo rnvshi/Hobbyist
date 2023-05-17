@@ -1,5 +1,4 @@
-/* Default styles */
-
+/* App */
 .App {
   text-align: center;
 }
@@ -7,6 +6,12 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
@@ -33,8 +38,10 @@
   }
 }
 
+
 /* Styling Alexia */
 
+/* Footer Positioning */
 #page-container {
   position: relative;
   min-height: 100vh;
@@ -45,9 +52,9 @@
   bottom: 0;
   width: 100%;
   height: 1rem;
-  color: white;
 }
 
+/* SignUp Form */
 .signup-fields {
   padding: 10px;
 }
@@ -95,6 +102,7 @@
   font-weight: 500;
 }
 
+/* Login Form */
 #password-login-form {
   margin-right: 10px;
 }
@@ -112,6 +120,7 @@
   color: black;
 }
 
+/* Profile Page Alexia */
 #logo-img-profile {
   max-width: 100px;
   border-radius: 50%;
@@ -127,8 +136,8 @@
 }
 
 #profileimggallery {
-  width: 200px;
-  height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   padding: 10px;
   margin: 5px;
   border: 5px solid white;
@@ -147,6 +156,10 @@
   margin-top: 30px;
 }
 
+#footer {
+  color: white;
+}
+
 #biotext {
   margin-right: 60px;
 }
@@ -156,6 +169,7 @@
   font-size: 40px;
 }
 
+/* NavBar Alexia */
 #navflex {
   display: flex;
   justify-content: center;
@@ -167,6 +181,7 @@
   padding-left: 5px;
 }
 
+/* Search Page */
 .search-container {
   display: flex;
   align-items: center;
@@ -177,482 +192,237 @@
 .search-input {
   padding: 10px;
   border-radius: 5px;
- 
-border: 2px solid #ccc;
-font-size: 16px;
-width: 300px;
-max-width: 100%;
-margin-right: 10px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  width: 300px;
+  max-width: 100%;
+  margin-right: 10px;
 }
 
 .search-button {
-background-color: #ccc;
-border: solid black 1px;
-padding: 10px;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
+  background-color: #ccc;
+  border: solid black 1px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .search-button:hover {
-background-color: #a4fc7b;
-color: black;
+  background-color: #a4fc7b;
+  color: black;
 }
 
+/* Feed Page */
 .feedposts {
-display: block;
-margin-right: auto !important;
-margin-left: auto !important;
-margin-bottom: 20px !important;
+  display: block;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  margin-bottom: 20px !important;
 }
 
 #profileimggallery {
-padding: 0 !important;
+  padding: 0 !important;
 }
 
 #feedflex {
-display: flex;
-border: 3px solid white;
-padding: 10px;
-max-width: 500px;
-background-color: #ccc;
+  display: flex;
+  border: 3px solid white;
+  padding: 10px;
+  max-width: 500px;
+  background-color: #ccc;
 }
 
 .feedblock {
-display: block;
+  display: block;
 }
 
 #feed-container {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 h3 {
-color: white;
+  color: white;
 }
 
 #feed-titles {
-margin-left: 20px;
+  margin-left: 20px;
 }
 
 #feed-title {
-margin-left: 22px;
+  margin-left: 22px;
 }
 
 #feed-comment-title {
-text-align: left;
+  text-align: left;
 }
 
 #like-button {
-float: left;
-font-size: 20px;
+  float: left;
+  font-size: 20px;
 }
 
+/* Friend Profile */
 #friendbuttonsflex {
-display: flex;
+  display: flex;
 }
 
 #friend-container {
-border: 3px solid white;
-padding-top: 20px;
-padding-bottom: 20px;
-max-width: 500px;
-background-color: #ccc;
-margin-left: auto;
-margin-right: auto;
+  border: 3px solid white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 500px;
+  background-color: #ccc;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .friendbuttons {
-margin: 10px;
+  margin: 10px;
 }
 
 #unfriendbutton {
-margin-right: 25px;
+  margin-right: 25px;
 }
 
 #requestpendingtext {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
+/* Album View Page Alexia */
 .albumviewposts {
-padding-bottom: 20px;
-padding-right: 5px;
+  padding-bottom: 20px;
+  padding-right: 5px;
 }
 
 #flexalbumview {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .albumviewimg {
-max-width: 200px;
-max-height: 200px;
-border: 5px solid white;
+  max-width: 200px;
+  max-height: 200px;
+  border: 5px solid white;
 }
 
 #albumtext {
-color: white;
+  color: white;
 }
 
 #albumbuttons {
-display: flex;
-justify-content: center;
-margin: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
 
 .albumbutton {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
+/* Post Page Alexia */
 .posttext {
-color: white;
+  color: white;
 }
 
 #postform {
-margin-left: auto;
-margin-right: auto;
-border: solid 2px white;
-background-color: #ccc;
-max-width: 500px;
-min-height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 2px white;
+  background-color: #ccc;
+  max-width: 500px;
+  min-height: 200px;
 }
 
 .postinput {
-margin: 10px;
+  margin: 10px;
 }
 
 #uploadimg {
-margin-right: 165px;
+  margin-right: 165px;
 }
 
 .posttext {
-margin-left: 20px;
+  margin-left: 20px;
 }
 
 #form-placement {
-margin-top: 40px;
-}
-
-.dropdown {
-position: relative;
-}
-
-.menu {
-position: absolute;
-list-style-type: none;
-margin: 5px 0;
-padding: 0;
-border: 1px solid grey;
-width: 150px;
-}
-
-.menu>li {
-margin: 0;
-background-color: white;
-}
-
-.menu>li:hover {
-background-color: lightgray;
-}
-
-.menu>li>button {
-width: 100%;
-height: 100%;
-text-align: left;
-background: none;
-color: inherit;
-border: none;
-padding: 5px;
-margin: 0;
-font: inherit;
-cursor: pointer;
-}
-
-/* Media Queries Alex
-
-ia */
-
-@media only screen and (max-width: 600px) {
-.signup-fields {
-padding: 5px;
-}
-
-#signup-form {
-margin-top: 30px;
-}
-
-#email-label {
-padding-right: 30px;
-font-size: 20px;
-}
-
-#password-label {
-padding-right: 15px;
-font-size: 20px;
-}
-
-.signup-form-label {
-padding-right: 5px;
-font-size: 20px;
-}
-
-#signup-button {
-padding: 5px 15px;
-margin-top: 10px;
-font-size: 16px;
-}
-
-#logo-img {
-margin-top: 20px;
-}
-
-#login-here {
-font-size: 14px;
-}
-
-#password-login-form {
-margin-left: 5px;
-}
-
-#profileimg {
-max-width: 150px;
-max-height: 150px;
-margin-left: 30px;
-}
-
-#profileimggallery {
-width: 150px;
-height: 150px;
-margin: 3px;
-}
-
-#profiletext {
-margin-left: 15px;
-}
-
-#profilegalleries {
-margin-top: 20px;
-}
-
-#biotext {
-margin-right: 30px;
-}
-
-#albumtext {
-font-size: 30px;
-}
-
-#navflex {
-margin-top: 15px;
-margin-bottom: 20px;
-}
-
-.navbuttons {
-padding-left: 3px;
-}
-
-.search-input {
-font-size: 14px;
-width: 200px;
-}
-
-.search-button {
-padding: 5px;
-font-size: 14px;
-}
-
-.feedposts {
-margin-bottom: 10px !important;
-}
-
-#profileimggallery {
-padding: 0 !important;
-}
-
-#feedflex {
-padding: 5px;
-max-width: 300px;
-}
-
-#feed-titles {
-margin-left: 15px;
-}
-
-#feed-title {
-margin-left: 17px;
-}
-
-#like-button {
-font-size: 16px;
-}
-
-#friend-container {
-padding-top: 15px;
-padding-bottom: 15px;
-max-width: 300px;
-}
-
-#requestpendingtext {
-margin-left: 5px;
-}
-
-.albumviewposts {
-padding-bottom: 10px;
-padding-right: 2px;
-}
-
-.albumviewimg {
-max-width: 150px;
-max-height: 150px;
-}
-
-#albumtext {
-font-size: 20px;
-}
-
-.albumbutton {
-margin-left: 5px;
-}
-
-.posttext {
-font-size: 16px;
-}
-
-#postform {
-margin-top: 20px;
-max-width: 300px;
-min-height: 150px;
-}
-
-.postinput {
-margin: 5px;
-}
-
-#uploadimg {
-margin-right: 120px;
-}
-
-.posttext {
-margin-left: 10px;
-}
-
-#form-placement {
-margin-top: 30px;
-}
-}
-
-@media only screen and (max-width: 400px) {
-.search-input {
-width: 150px;
-}
-
-.search-button {
-font-size: 12
-
-px;
-}
-
-#profileimg {
-max-width: 120px;
-max-height: 120px;
-margin-left: 20px;
-}
-
-#profileimggallery {
-width: 120px;
-height: 120px;
-margin: 2px;
-}
-
-#profiletext {
-margin-left: 10px;
-}
-
-#albumtext {
-font-size: 16px;
-}
-
-#navflex {
-margin-top: 10px;
-margin-bottom: 15px;
-}
-
-.navbuttons {
-padding-left: 2px;
-}
-
-.feedposts {
-margin-bottom: 5px !important;
-}
-
-#feedflex {
-padding: 3px;
-max-width: 250px;
-}
-
-#feed-titles {
-margin-left: 10px;
-}
-
-#feed-title {
-margin-left: 12px;
-}
-
-#like-button {
-font-size: 12px;
-}
-
-#friend-container {
-padding-top: 10px;
-padding-bottom: 10px;
-max-width: 250px;
-}
-
-#requestpendingtext {
-margin-left: 3px;
-}
-
-.albumviewposts {
-padding-bottom: 5px;
-padding-right: 1px;
-}
-
-.albumviewimg {
-max-width: 100px;
-max-height: 100px;
-}
-
-#albumtext {
-font-size: 14px;
-}
-
-.albumbutton {
-margin-left: 2px;
-}
-
-.posttext {
-font-size: 12px;
-}
-
-#postform {
-margin-top: 10px;
-max-width: 250px;
-min-height: 120px;
-}
-
-.postinput {
-margin: 3px;
-}
-
-#uploadimg {
-margin-right: 85px;
-}
-
-.posttext {
-margin-left: 5px;
-}
-
-#form-placement {
-margin-top: 20px;
-}
+  margin-top: 40px;
+}
+
+/* Media Queries Alexia */
+@media screen and (max-width: 375px) {
+  /* SignUp Form */
+  #logo-img-div {
+    display: flex;
+  }
+
+  #logo-img {
+    justify-content: center;
+    padding-left: 20px;
+  }
+
+  #signup-form-flex {
+    display: flex;
+  }
+
+  #signup-form {
+    justify-content: center;
+  }
+
+  #userName,
+  #email,
+  #password {
+    max-width: 130px;
+  }
+
+  /* Profile Page Alexia */
+  #profileimg {
+    margin-left: 20px;
+  }
+
+  /* NavBar Alexia */
+  #navflex {
+    flex-wrap: wrap;
+  }
+
+  .navbuttons {
+    padding: 5px;
+  }
+
+  /* Search Page */
+  .search-container {
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .search-button {
+    margin-top: 10px;
+  }
+
+  /* Feed Page */
+  #feedflex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Friend Profile */
+  #friend-container {
+    padding: 10px;
+  }
+
+  /* Album View Page Alexia */
+  .albumviewimg {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  /* Post Page Alexia */
+  #postform {
+    max-width: 350px;
+  }
 }
