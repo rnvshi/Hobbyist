@@ -11,12 +11,20 @@ query user($userId: ID!) {
     pseudonym
     avatar
     bio
+    friends {
+      friendId
+      sender
+      accepted
+    }
     myAlbums {
       _id
       albumName
       description
+      posts {
+        postImg
+      }
     }
-    }
+  }
 }
 `;
 

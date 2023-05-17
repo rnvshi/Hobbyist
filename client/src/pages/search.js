@@ -27,13 +27,11 @@ const Search = () => {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
-    const { data } = await searchUsername({
+    const { searchData } = await searchUsername({
       variables: { ...searchState },
     });
+  };
 
-    console.log(data);
-
-  }
 
   return (
 

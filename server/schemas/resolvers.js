@@ -413,7 +413,15 @@ const resolvers = {
                     runValidators: true,
                 }
             );
-        }
+        },
+
+        updateUser: async (parent, { bio }, context) => {
+            if(!context.user){
+                throw new AuthenticationError("Must be logged in to do this!");
+            }
+
+            return User.findOneAndUpdate({ _id: context.user._id}, { $set: { bio } }, { new: true})
+        },
     }
 };
 
