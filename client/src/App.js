@@ -58,11 +58,11 @@ function App() {
                 <Route path="/profile/me" element={<Profile />} />
                 <Route path="/profile/:userId" element={<Profile />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/feed" element={<Feed />} />
                 <Route path="/friendprofile" element={<FriendProfile />} /> {/* // need ---> /:id */}
                 <Route path="/post" element={<Post />} />
                 <Route path="/albumview" element={<Albumview />} />
                 <Route path="albumcreate" element={<AlbumCreate />} />
+                <Route path="/*" element={<Feed />} />
 
               </Routes>
               <Footer id="footer" />

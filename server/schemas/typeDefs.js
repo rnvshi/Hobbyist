@@ -78,6 +78,7 @@ const typeDefs = gql`
     followAlbum(albumId: ID!): User
     unfollowAlbum(albumId: ID!): User
     likePost(postId: ID!): Post
+    updateUser(bio: String!): User
   }
 `;
 
