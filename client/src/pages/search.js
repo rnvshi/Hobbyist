@@ -30,10 +30,8 @@ const Search = () => {
     const { searchData } = await searchUsername({
       variables: { ...searchState },
     });
-
-    
-
   };
+
 
   return (
 
@@ -62,10 +60,12 @@ const Search = () => {
               <p>{data?.singleUsername.bio}</p>
             </div>
           </Link>
+
         }
 
       </div>
     </>
+
   );
 };
 

@@ -126,9 +126,9 @@ const Profile = () => {
   }
 
 
+
   const user = data?.me || data?.SingleUser || {};
 
-  // Use React Router's `<Navigate />` component to redirect to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
     return <Navigate to="/profile/me" />;
   }
@@ -277,12 +277,13 @@ const Profile = () => {
         ></img>
       </Link>
 
-    ))}
-    </div>
+          ))}
+        </div>
 
-    }
+
+      }
     </>
   )}
-  
+
 
 export default Profile
