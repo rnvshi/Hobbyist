@@ -28,6 +28,8 @@ const PostCard = ({ albumName, postId, postImg, caption, comments }) => {
           variables: { postId: postId, text: commentState.text },
         });
 
+        alert('Comment posted !');
+
       } catch (e) {
         console.error(e);
       }
@@ -44,6 +46,11 @@ const PostCard = ({ albumName, postId, postImg, caption, comments }) => {
         <img src={postImg} className="postImg"></img>
         <h2 className="postCaption">{caption}</h2>
         <div className="commentContainer">
+          {comments.map((comment, index) =>
+            <>
+              <p key={index}>{comment.username}     {comment.text}</p>
+            </>
+          )}
           <form onSubmit={handlePostComment}>
             <input className="commentText" placeholder='Add a comment...' onChange={handleChange}></input>
             <br />
@@ -56,4 +63,4 @@ const PostCard = ({ albumName, postId, postImg, caption, comments }) => {
   )
 }
 
-export default PostCard
+export default PostCard;
