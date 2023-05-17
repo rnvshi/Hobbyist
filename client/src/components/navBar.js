@@ -22,20 +22,20 @@ const navBar = () => {
       <nav id="navflex">
 
         <div className="navbuttons">
-          <Link to="/profile/me"><button onClick={window.location.reload()} >PROFILE</button></Link>
+          <Link to="/profile/me"><button  >PROFILE</button></Link>
         </div>
 
         <div className="navbuttons">
-          <Link to="/"><button onClick={window.location.reload()} >FEED</button></Link>
+          <Link to="/"><button>FEED</button></Link>
         </div>
 
         <div className="dropdown navbuttons">
-          <Link to="/albumcreate"><button onClick={window.location.reload()} className="dropdown-button">CREATE ALBUM</button></Link>
+          <Link to="/albumcreate"><button className="dropdown-button">CREATE ALBUM</button></Link>
 
         </div>
 
         <div className="navbuttons">
-          <Link to="/createPost"><button onClick={window.location.reload()} >POST</button></Link>
+          <Link to="/createPost"><button>POST</button></Link>
         </div>
 
         {/* <div className="navbuttons">
@@ -43,7 +43,7 @@ const navBar = () => {
          </div> */}
 
         <div className="navbuttons">
-          <Link to="/search"> <button onClick={window.location.reload()} >SEARCH</button></Link>
+          <Link to="/search"> <button>SEARCH</button></Link>
         </div>
 
         <div className="navbuttons">
