@@ -10,7 +10,7 @@ const Signup = () => {
 
   const [formState, setFormState] = useState({ firstName: '', lastName: '', userName: '', email: '', password: '' });
   const [signup, { error, data }] = useMutation(CREATE_USER);
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,14 +40,12 @@ const Signup = () => {
         return;
       }
   
-      if (formState.password.includes(' ')) {
-        alert('Password cannot contain spaces.');
-        return;
-      }
+      // Remove leading and trailing spaces from the password
+      const trimmedPassword = formState.password.trim();
     
       try {
       const { data } = await signup({
-        variables: { ...formState },
+        variables: { ...formState, password: trimmedPassword },
       });
       console.log(data)
       Auth.login(data.createUser.token);
@@ -64,6 +62,10 @@ const Signup = () => {
       email: '',
       password: '',
     });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -109,24 +111,34 @@ const Signup = () => {
           name='email'
           value={formState.email}
           onChange={handleChange} 
-          ></input>
-        </div>
-        <div className="signup-fields">
-          <label id="password-label" className="signup-form-label">Password</label>
-          <input 
-          id="password"
-          name='password'
-          type="password"
-          value={formState.password}
-          onChange={handleChange}  
           />
         </div>
-
+        
+      <div className="signup-fields">
+        <div className="password-input-container">
+          <label id="password-label" className="signup-form-label">Password</label>
+          
+          <input className="signup-form-input"
+          id="password"
+          name='password'
+          type={showPassword ? 'text' : 'password'}
+          value={formState.password}
+          onChange={handleChange} />
+        <button
+          type="button"
+          className="password-toggle-button"
+          onClick={togglePasswordVisibility}>
+          {showPassword ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    </div>
+        
+        
         <button id="signup-button" type="submit">SIGN UP</button>
       </form>
     </div>
 
-  )
-}
+  );
+};
 
 export default Signup
