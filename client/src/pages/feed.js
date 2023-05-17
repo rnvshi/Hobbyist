@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { GET_FEED } from '../utils/queries'
 import { LIKE_POST } from '../utils/mutations'
 import { useQuery, useMutation, useLazyQuery, RefetchQueriesFunction } from '@apollo/client'
+import { Link } from "react-router-dom";
 import Navigation from '../components/navBar'
 import hobbylogo from '../images/hobbylogo.png'
 import Footer from '../components/footer'
@@ -76,7 +77,9 @@ const Feed = () => {
             >
               <div  className="feedblock">
                 <div>
+                  <Link to={`/post/${post._id}`} >
                   <img className="feedposts" id="profileimggallery" src={post.postImg}></img>
+                  </Link>
                 </div>
                 <div>
 
