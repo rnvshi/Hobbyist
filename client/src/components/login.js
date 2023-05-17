@@ -36,7 +36,6 @@ const Login = () => {
 
       Auth.login(data.login.token);
     } catch (e) {
-      console.error(e);
       alert('Incorrect username or password.');
     }
 

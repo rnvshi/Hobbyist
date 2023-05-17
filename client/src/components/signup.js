@@ -50,7 +50,6 @@ const Signup = () => {
       console.log(data)
       Auth.login(data.createUser.token);
     } catch (e) {
-      console.error(e);
       alert('An error occurred during signup. Please try again.');
     }
 
