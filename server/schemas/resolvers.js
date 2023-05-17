@@ -30,12 +30,16 @@ const resolvers = {
 
         me: async (parent, args, context) => {
             return User.findOne({ _id: context.user._id })
-                .populate({
-                    path: 'myAlbums',
-                    populate: {
-                        path: 'posts'
-                    }
-                });
+                .populate(
+                    [{
+                        path: 'myAlbums',
+                        populate: {
+                            path: 'posts'
+                        }
+                    }, {
+                        path: 'followedAlbums'
+                    }]
+                );
         },
 
         singleUsername: async (parent, { username }) => {
@@ -49,11 +53,12 @@ const resolvers = {
                 .populate('posts');
         },
 
-        // GET all posts associated with an album name
+        // GET all posts associated with an album ID
         // entire comment subdocument populates comment field
-        allPosts: async (parent, { albumName }) => {
+        singleAlbum: async (parent, { albumId }) => {
 
-            return Post.find({ albumName });
+            return Album.findOne({ _id: albumId })
+                .populate('posts');
         },
 
         // GET a single post (and associated comments) given postId
@@ -358,23 +363,23 @@ const resolvers = {
 
         //likePost
         //will add like to post, or remove like if ID is present in array already
-        likePost: async (parent, {postId}, context) => {
-            if(!context.user){
+        likePost: async (parent, { postId }, context) => {
+            if (!context.user) {
                 throw new AuthenticationError("Must be logged in to do this!");
             }
 
-            const post = await Post.findOne({_id: postId});
+            const post = await Post.findOne({ _id: postId });
 
             //checks if userId is already in like array, if it is, removes it
-            if(post.likes.some((like) => like == context.user._id)){
-                const updatedPost = await Post.findOneAndUpdate({ _id: postId}, { $pull: { likes: context.user._id }}, { new: true});
+            if (post.likes.some((like) => like == context.user._id)) {
+                const updatedPost = await Post.findOneAndUpdate({ _id: postId }, { $pull: { likes: context.user._id } }, { new: true });
 
 
                 return updatedPost;
-            }else{
+            } else {
                 //userId is not in like array, add it
-                const updatedPost = await Post.findOneAndUpdate({ _id: postId}, { $push: { likes: { _id: context.user._id }}}, { new: true})
-    
+                const updatedPost = await Post.findOneAndUpdate({ _id: postId }, { $push: { likes: { _id: context.user._id } } }, { new: true })
+
                 return updatedPost;
             }
         },
@@ -416,11 +421,11 @@ const resolvers = {
         },
 
         updateUser: async (parent, { bio }, context) => {
-            if(!context.user){
+            if (!context.user) {
                 throw new AuthenticationError("Must be logged in to do this!");
             }
 
-            return User.findOneAndUpdate({ _id: context.user._id}, { $set: { bio } }, { new: true})
+            return User.findOneAndUpdate({ _id: context.user._id }, { $set: { bio } }, { new: true })
         },
     }
 };

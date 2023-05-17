@@ -57,7 +57,7 @@ const typeDefs = gql`
     me: User
     singleUsername(username: String!): User
     allAlbums(username: String!): [Album]
-    allPosts(albumName: String!): [Post]
+    singleAlbum(albumId: ID!): Album
     singlePost(postId: ID!): Post
     getFeed: User
   }

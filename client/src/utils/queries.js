@@ -29,7 +29,7 @@ query user($userId: ID!) {
 `;
 
 export const QUERY_ME = gql`
-query me {
+query Me {
   me {
     _id
     userName
@@ -39,8 +39,12 @@ query me {
       _id
       albumName
       posts {
+        _id
         postImg
       }
+    }
+    followedAlbums {
+      _id
     }
   }
 }
@@ -59,29 +63,34 @@ query Query($username: String!) {
 
 // GET all the information needed for Album gallery
 export const QUERY_GALLERY = gql`
-query AllPosts($albumName: String!) {
-    allPosts(albumName: $albumName) {
+query SingleAlbum($albumId: ID!) {
+  singleAlbum(albumId: $albumId) {
+    _id
+    albumName
+    description
+    posts {
       _id
       postImg
     }
   }
+}
 `;
 
 // GET all the information needed for a Post
 export const QUERY_POST = gql`
 query SinglePost($postId: ID!) {
-    singlePost(postId: $postId) {
-      _id
-      albumName
-      postImg
-      caption
+  singlePost(postId: $postId) {
+    _id
+    albumName
+    postImg
+    caption
       comments {
-        _id
-        username
-        text
-      }
+      _id
+      username
+      text
     }
   }
+}
 `;
 
 export const GET_FEED = gql`
@@ -136,6 +145,6 @@ query Query($userId: ID!) {
       albumName
       description
     }
-    }
+  }
 }
 `;
