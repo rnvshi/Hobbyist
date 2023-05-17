@@ -15,7 +15,7 @@ const Login = () => {
     const { name, value } = event.target;
     setFormState((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value.trim(), // Trim leading and trailing spaces from the password
     }));
   };
 
@@ -37,7 +37,7 @@ const Login = () => {
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
-      alert('Enter correct Username and Password.');
+      alert('Incorrect username or password.');
     }
 
     // clear form values
@@ -54,10 +54,7 @@ const Login = () => {
   return (
 
     <div id="signup-form-flex">
-      <form 
-      id="signup-form"
-      onSubmit={handleFormSubmit}
-      >
+      <form id="signup-form" onSubmit={handleFormSubmit}>
         <div className="signup-fields">
           <label className="signup-form-label">User Name</label>
           <input 
@@ -68,8 +65,10 @@ const Login = () => {
           />
         </div>
         <div className="signup-fields">
-          <label className="signup-form-label" id="password-login-form">Password</label>
-          <div className="password-input-container">
+        <div className="password-input-container">
+        <label className="signup-form-label" id="password-label">
+            Password
+          </label>
           <input 
           id="password-login-form"
           name='password'
