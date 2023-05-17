@@ -41,7 +41,7 @@ const Gallery = () => {
         console.log('unfollow this album');
 
         try {
-            const { data } = await followAlbum({
+            const { data } = await unfollowAlbum({
                 variables: { albumId: albumId }
             });
 
