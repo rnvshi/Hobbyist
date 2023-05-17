@@ -135,10 +135,6 @@ const Profile = () => {
 
   const friend = data?.singleUser?.friends.find((friend) => friend.friendId == Auth.getProfile().data._id);
 
-
-
-
-
   return (
     <>
       {!userId ?
