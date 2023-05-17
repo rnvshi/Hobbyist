@@ -133,7 +133,7 @@ const Profile = () => {
     return <Navigate to="/profile/me" />;
   }
 
-  const friend = data?.singleUser.friends.find((friend) => friend.friendId == Auth.getProfile().data._id);
+  const friend = data?.singleUser?.friends.find((friend) => friend.friendId == Auth.getProfile().data._id);
   
 
 
