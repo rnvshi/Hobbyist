@@ -468,3 +468,27 @@ h3 {
     max-width: 130px;
   }
 }
+
+/* postCard styling */
+
+.postCard {
+  border: solid red 1px;
+  height: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.postContent {
+  border: solid blue 1px;
+  background: white;
+  padding: 20px;
+}
+
+.postImg,
+.postCaption {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
