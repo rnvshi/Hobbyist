@@ -22,11 +22,11 @@ const navBar = () => {
       <nav id="navflex">
 
         <div className="navbuttons">
-          <Link to="/profile/me"><button>PROFILE</button></Link>
+          <Link to="/profile/me"><button  >PROFILE</button></Link>
         </div>
 
         <div className="navbuttons">
-          <Link to="/feed"><button>FEED</button></Link>
+          <Link to="/"><button>FEED</button></Link>
         </div>
 
         <div className="dropdown navbuttons">
