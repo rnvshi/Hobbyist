@@ -81,27 +81,9 @@ const resolvers = {
     },
 
     Mutation: {
-        login: async (parent, { userName, password }) => {
-
-            const user = await User.findOne({ userName });
-
-            if (!user) {
-                throw new AuthenticationError('No user found with this email address');
-            }
-
-            const correctPw = await user.isCorrectPassword(password);
-
-            if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
-            }
-
-            const token = signToken(user);
-
-            return { token, user };
-        },
-
         createUser: async (parent, { firstName, lastName, userName, email, password }) => {
-            const user = await User.create({ firstName, lastName, userName, email, password });
+            const user = await User.create({ firstName, lastName, userName, email, password })
+
             const token = signToken(user);
             return { token, user };
         },
@@ -208,7 +190,8 @@ const resolvers = {
 
         //login
         login: async (parent, { userName, password }) => {
-            const user = await User.findOne({ userName });
+            const user = await User.findOne({ userName })
+
 
             if (!user) {
                 throw new AuthenticationError('No user with this username found!');

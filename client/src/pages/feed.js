@@ -1,23 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { GET_FEED } from '../utils/queries'
 import { LIKE_POST } from '../utils/mutations'
-import { useQuery, useMutation, useLazyQuery, RefetchQueriesFunction } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { Link } from "react-router-dom";
-import Navigation from '../components/navBar'
-import hobbylogo from '../images/hobbylogo.png'
-import Footer from '../components/footer'
-import PlaceholderImg from '../images/placeholderimg.png'
-import auth from '../utils/auth'
+
+import Auth from '../utils/auth'
+
+import { UserContext } from '../utils/userContext';
 
 const Feed = () => {
-  const [activeitem, setactiveitem] = useState(false)
+  const [userState,setUserState] = useContext(UserContext);
+
+  const loadData = () => {
+    if(!Auth.loggedIn()){
+      console.log('not logged in')
+    }else {
+      setUserState(
+        {
+          ...userState,
+            _id: Auth.getProfile().data._id,
+            userName: Auth.getProfile().data.userName,
+            pseudonym: Auth.getProfile().data.pseudonym,
+            bio: userState.bio || Auth.getProfile().data.bio,
+            avatar: Auth.getProfile().data.avatar,
+            myAlbums: [...Auth.getProfile().data.myAlbums],
+            followedAlbums: [...Auth.getProfile().data.followedAlbums],
+            friends: [...Auth.getProfile().data.friends]
+        }
+      )
+    }
+  }
   
-  const [refreshFeed, { loading1, data1, error1 }] = useLazyQuery(GET_FEED);
+  useEffect(() =>{
+    if(!userState._id){
+      loadData()
+      console.log("loaded data")
+    }
+  }, []);
+
 
   const { data, loading } = useQuery(GET_FEED)
-  const feed = data1?.getFeed || data?.getFeed
-  // console.log(data)
-  
+  const feed = data?.getFeed
+
+    
   let posts = [];
   feed?.followedAlbums.forEach((album) => {
     posts = [...album.posts, ...posts]
@@ -51,7 +76,7 @@ const Feed = () => {
   })
 
 
-  const [updateLikes, { error, likeData }] = useMutation(LIKE_POST);
+  const [updateLikes, { likeData }] = useMutation(LIKE_POST);
  
 
   const [postId, setId] = useState("")
@@ -60,10 +85,14 @@ const Feed = () => {
   useEffect(() => {
     if(postId){
       console.log(postId)
-      const data = updateLikes({variables: {postId: postId}});
+      updateLikes({variables: {postId: postId}});
       window.location.reload();
     }
   },[postId])
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
 
@@ -78,17 +107,11 @@ const Feed = () => {
               <div  className="feedblock">
                 <div>
                   <Link to={`/post/${post._id}`} >
-                  <img className="feedposts" id="profileimggallery" src={post.postImg}></img>
+                  <img className="feedposts" alt='post icon' id="profileimggallery" src={post.postImg}></img>
                   </Link>
                 </div>
-                <div>
+              <div>
 
-                  {/* <h3 id="feed-comment-title">Comments:</h3> */}
-                  {/* {post.comments.map(comment => <div>
-                    <p>{comment.text}</p>
-                    <p>Comment created by:{comment.username}</p>
-
-                  </div>)} */}
                   <button 
                   id="like-button"
                   onClick={() => {
